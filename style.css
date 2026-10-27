@@ -97,3 +97,17 @@ body:has(#monitor[aria-pressed=true]) .door-controls{visibility:hidden}
 @media(max-width:900px){.map{width:270px}}
 @media(max-width:600px){.camera-title{left:20px;top:30px}.camera-title h2{font-size:20px;max-width:210px}.camera-view::after{inset:9px}.map{right:14px;bottom:124px;width:238px;padding:10px}#mapButtons button{width:49px;min-height:32px;font-size:10px}.map-location{font-size:10px}.floor-plan .you{font-size:7px;top:85%}.feed-time{left:20px;bottom:100px;font-size:10px}.sound-caption{bottom:370px}}
 @media(prefers-reduced-motion:reduce){.camera-view.switching .cam-room{transform:none}}
+/* Campus security office: noticeboard, directory and institutional floor. */
+.office .floor{background:repeating-conic-gradient(#242421 0% 25%,#282824 0% 50%) 0/70px 70px}
+.poster{background:#757568;color:#181a17;transform:rotate(-2deg);width:140px;height:168px;border:5px solid #3f4139;padding:12px 6px}
+.poster small{font:16px 'Courier New',monospace;letter-spacing:2px}
+.poster .campus-mark{font:60px/1.2 Georgia,serif;color:#292c25}
+.poster span{display:block;font:7px/1.5 'Courier New',monospace;letter-spacing:.5px}
+.paper{font-size:9px;line-height:1.6;width:110px}.desk-monitor small{font-size:6px;line-height:1.5}
+@media(max-width:600px){.poster{width:95px;height:144px}.poster small{font-size:12px;letter-spacing:0}.poster .campus-mark{font-size:48px}.poster span{font-size:6px}}
+/* UCA reference: published black wordmark and website blue on campus signage. */
+.poster{width:195px;height:auto;min-height:170px;padding:12px;background:#f0f0eb;border:0;border-bottom:8px solid #003c71;transform:none;box-shadow:2px 5px 14px #0008}
+.poster img{display:block;width:100%;height:auto;object-fit:contain}
+.poster span{padding:8px 0 0;font:8px/1.5 Arial,sans-serif;letter-spacing:.6px;color:#003c71}
+.camera-view{filter:saturate(.28)}
+@media(max-width:600px){.poster{width:110px;min-height:0;padding:8px}.poster span{font-size:6px;letter-spacing:0}.map-title{font-size:9px;letter-spacing:.6px}}

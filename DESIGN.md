@@ -9,6 +9,7 @@ colors:
   text: "#e5e5df"
   control: "#151513dd"
   control-hover: "#373731"
+  uca-site-blue: "#003c71"
 typography:
   display:
     fontFamily: "Courier New, monospace"
@@ -46,6 +47,8 @@ The user requested a more immersive, minimal horror game in the spirit of FNAF 1
 
 The `lime` custom property remains named for compatibility but now holds an off-white. Text and borders use warm gray neutrals on black. A muted red (`#722e26`) identifies a closed door. Camera images are grayscale; existing original character colors remain underneath the scene filters.
 
+The user selected [UCA’s visual identity](https://uca.edu.sv/identidad-visual/) as the campus reference. The published black wordmark is used intact as an image in the security office. Blue-and-white Spanish room signs use `uca-site-blue`, observed on the official website; the complete manual was login-gated, so this is not a verified manual color specification. Camera feeds retain low saturation, while controls remain neutral. The fictional room plan does not claim to reproduce the real campus. Asset sources are recorded in `assets/uca/SOURCE.md`.
+
 ## Typography
 
 Courier New with a monospace fallback carries the interface, referencing the requested minimal horror-game presentation. Body text is 14px. The title scales from 44px to 80px on desktop and is 49px below 600px. Clock text is 32px, reduced to 26px on mobile. Buttons and captions generally use 11–14px; the title action uses 18px.
@@ -74,9 +77,9 @@ Door and light buttons sit in vertical edge clusters with visible text labels. D
 
 ### Camera monitor and map
 
-The monitor toggles between office and surveillance. A connected floor plan holds eight camera buttons at their room positions, with the office at the bottom between the two corner approaches. The active camera uses a light fill and dark text; the selected room name appears below the plan. Map controls and titles remain above interference. The initial camera is Show stage (CAM 01).
+The monitor toggles between office and surveillance. A connected floor plan holds eight camera buttons at their room positions, with the office at the bottom between the two corner approaches. The active camera uses a light fill and dark text; the selected room name appears below the plan. Map controls and titles remain above interference. The initial camera is Lecture hall (CAM 01).
 
-Each feed uses fixed-lens perspective geometry rendered into a canvas: a raised stage, dining tables, backstage equipment, west/east corridors, a supply closet, and two office corners. Room scale, camera placement, props, ceiling panels, and distance shading distinguish the views. Existing characters are projected into room space. Canvas redraws are cached until camera, occupants, or viewport changes. Mobile uses the same room geometry and a smaller floor plan.
+Each feed uses fixed-lens perspective geometry rendered into a canvas: a lecture hall with desks and chalkboard, a library with book stacks, a teaching lab, west/east academic corridors, archives, a stairwell landing, and a faculty lobby. Room scale, camera placement, props, ceiling panels, and distance shading distinguish the views. Existing characters are projected into room space. Canvas redraws are cached until camera, occupants, or viewport changes. Mobile uses the same room geometry and a smaller floor plan.
 
 ### Status, captions, and help
 

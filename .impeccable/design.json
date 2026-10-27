@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-10-27T23:27:20.512891+00:00",
+  "generatedAt": "2026-10-27T23:45:17.827388+00:00",
   "title": "Design System: The Night Shift",
   "extensions": {
     "shadows": [],
@@ -24,7 +24,14 @@
         "name": "wide",
         "value": "1500px"
       }
-    ]
+    ],
+    "colorMeta": {
+      "uca-site-blue": {
+        "role": "secondary",
+        "displayName": "UCA website blue",
+        "canonical": "#003c71"
+      }
+    }
   },
   "components": [
     {
@@ -53,7 +60,7 @@
     {
       "name": "Camera map",
       "kind": "nav",
-      "description": "Spatial floor plan with eight camera positions and an office marker. The selected room name remains below the plan.",
+      "description": "Fictional university academic-block floor plan, with lecture hall, library, lab, corridors, archives, stairwell, faculty lobby and campus security. Camera indices preserve gameplay routes.",
       "html": "<nav class=\"ds-map\" aria-label=\"Building cameras\"><svg viewBox=\"0 0 220 180\" aria-hidden=\"true\"><path d=\"M80 5h60v40H80zM55 60h110v45H55zM15 110h40v30H15zM165 110h40v30h-40zM85 145h50v30H85zM110 45v15M35 110v-25h20M185 110v-25h-20M35 140v20h50M185 140v20h-50\" fill=\"none\" stroke=\"currentColor\"/></svg><button class=\"ds-cam-one\" aria-pressed=\"true\">CAM 01</button><button class=\"ds-cam-two\" aria-pressed=\"false\">CAM 02</button><span>OFFICE</span></nav>",
       "css": ".ds-map{position:relative;width:220px;background:#070707;color:#deded5;padding:10px;font:11px \"Courier New\",monospace}.ds-map svg{display:block;width:100%}.ds-map button{position:absolute;width:60px;min-height:32px;background:#171717;color:#efefe5;border:1px solid #99998e;cursor:pointer;font:11px monospace}.ds-cam-one{left:90px;top:13px}.ds-cam-two{left:90px;top:73px}.ds-map button[aria-pressed=true]{background:#e0e0d2;color:#111}.ds-map button:hover{background:#46463e;color:#fff}.ds-map button:focus-visible{outline:2px solid #eee;outline-offset:4px}.ds-map span{position:absolute;bottom:19px;left:99px;font-size:8px}"
     },
@@ -67,7 +74,7 @@
   ],
   "narrative": {
     "northStar": "Haunted maintenance console",
-    "overview": "The user requested a more immersive, minimal horror game in the spirit of FNAF 1. The room fills the screen; the interface recedes into a clock, power readout, hallway controls, and camera toggle. The former decorative website framing and lime accents no longer lead the experience.",
+    "overview": "The user requested a more immersive, minimal horror game in the spirit of FNAF 1. The room fills the screen; the interface recedes into a clock, power readout, hallway controls, and camera toggle. The former decorative website framing and lime accents no longer lead the experience. University rooms use the user-selected UCA visual reference: an intact published black wordmark in the security office and blue-and-white Spanish room signs. Room geometry is fictional.",
     "keyCharacteristics": [
       "Near-monochrome, dim surveillance imagery.",
       "Sparse title menu and plain operational typography.",

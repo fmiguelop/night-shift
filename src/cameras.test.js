@@ -4,7 +4,7 @@ import {CAMERA_ROOMS,createCameraRenderer} from './cameras.js';
 
 test('all camera lenses produce finite geometry, respond to resize and cache unchanged feeds',()=>{
  let resized,polygons=0;
- const ctx={fillRect(...n){assert.ok(n.every(Number.isFinite))},beginPath(){},closePath(){},fill(){polygons++},stroke(){},moveTo(...n){assert.ok(n.every(Number.isFinite))},lineTo(...n){assert.ok(n.every(Number.isFinite))},createRadialGradient(...n){assert.ok(n.every(Number.isFinite));return {addColorStop(){}}}};
+ const ctx={save(){},restore(){},transform(...n){assert.ok(n.every(Number.isFinite))},fillText(){},fillRect(...n){assert.ok(n.every(Number.isFinite))},beginPath(){},closePath(){},fill(){polygons++},stroke(){},moveTo(...n){assert.ok(n.every(Number.isFinite))},lineTo(...n){assert.ok(n.every(Number.isFinite))},createRadialGradient(...n){assert.ok(n.every(Number.isFinite));return {addColorStop(){}}}};
  const canvas={getContext(){return ctx},getBoundingClientRect(){return {width:1280,height:720}}};
  const cast={children:[],replaceChildren(){this.children=[]},append(el){this.children.push(el)}};
  const oldResize=globalThis.ResizeObserver,oldDocument=globalThis.document;

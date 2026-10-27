@@ -16,7 +16,7 @@ A browser survival-horror game intended for short, casual play sessions. The cur
 
 ## Operating Context
 
-The player monitors rooms from a security office, watches two hallways, and manages doors, lights, and limited power. A round can be restarted after winning or losing. Instructions pause the simulation.
+The player monitors a fictional university academic block from a campus security office, watches two hallways, and manages doors, lights, and limited power. A round can be restarted after winning or losing. Instructions pause the simulation.
 
 ## Capabilities and Constraints
 
@@ -33,7 +33,7 @@ Open decisions: target devices, difficulty and replayability goals, persistence,
 
 ## Brand Commitments
 
-The current product name is The Night Shift. The repository describes it as an original prototype inspired by the camera, door, and power-management loop of Five Nights at Freddy's, using original CSS-drawn characters rather than game assets. Long-term naming and asset requirements remain unconfirmed.
+The current product name is The Night Shift. The repository describes it as an original prototype inspired by the camera, door, and power-management loop of Five Nights at Freddy's, using original CSS-drawn characters rather than game assets. The university setting uses UCA (Universidad Centroamericana José Simeón Cañas, El Salvador) as the user-requested visual reference: https://uca.edu.sv/identidad-visual/. Use the published wordmark intact; do not invent official campus geography or imply institutional affiliation. The room plan and horror scenario are fictional.
 
 ## Evidence on Hand
 
@@ -43,6 +43,8 @@ The current product name is The Night Shift. The repository describes it as an o
 - `src/main.js`: controls, presentation, captions, and synthesized audio.
 - `src/game.test.js`: simulation tests.
 - `style.css` and `assets/camera-noise.svg`: incumbent presentation and local visual asset.
+- `src/cameras.js`: eight university room geometries and camera lenses.
+- `assets/uca/wordmark-black.jpg` and `assets/uca/SOURCE.md`: published UCA wordmark and source provenance.
 
 ## Product Principles
 

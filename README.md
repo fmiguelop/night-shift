@@ -1,6 +1,6 @@
 # The Night Shift
 
-An original browser survival-horror prototype inspired by the camera, door, and power-management loop of Five Nights at Freddy's. Generic CSS-drawn characters; no game assets or dependencies.
+An original browser survival-horror prototype inspired by the camera, door, and power-management loop of Five Nights at Freddy's. University-themed rooms with original CSS-drawn characters and no runtime dependencies. The campus setting takes visual cues from UCA’s published identity; room geography and the horror scenario are fictional. See `assets/uca/SOURCE.md` for artwork provenance.
 
 ## Run
 
@@ -11,3 +11,5 @@ An original browser survival-horror prototype inspired by the camera, door, and 
 Survive a four-minute shift. Space toggles cameras; click map buttons to switch rooms. A/D control west/east doors; Q/E toggle hallway lights. Visitors retreat after a few seconds at a closed door. Each active device consumes power. Instructions pause the simulation. Optional synthesized audio can be enabled with the sound button.
 
 Built with HTML, CSS, and JavaScript modules. All state is local to the browser. The default night starts fresh on reload.
+
+Camera rooms: lecture hall, library, teaching lab, west/east corridors, archives, west stairwell, and faculty lobby. CAM 06 (Archives) slows Pip’s buildup.

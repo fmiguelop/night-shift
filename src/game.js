@@ -1,8 +1,8 @@
-export const ROOMS = ['Show stage','Dining room','Backstage','West hall','East hall','Supply closet','West corner','East corner'];
+export const ROOMS = ['Lecture hall','Library','Teaching lab','West corridor','East corridor','Archives','West stairwell','Faculty lobby'];
 export const DURATION = 240;
 export const DEATH_HINTS = {
  Marlow: 'Marlow advances faster while your monitor is raised. Keep checks brief and close the west door when his chuckle reaches the office.',
- Pip: 'Pip’s running footsteps mean a dash has begun. Close the west door immediately. Checking the supply closet slows his buildup.',
+ Pip: 'Pip’s running footsteps mean a dash has begun. Close the west door immediately. Checking the archives slows his buildup.',
  Dot: 'Short flashes of the east light repel Dot. A long beam makes her adapt; close the east door if she stays.'
 };
 export function createGame(random = Math.random) {
@@ -42,7 +42,7 @@ export function tick(g,dt){
    continue;
   }
   if(a.kind==='rabbit'){
-   // Closet observation buys time, but cannot hold Pip indefinitely.
+   // Archives observation buys time, but cannot hold Pip indefinitely.
    a.charge+=dt*(g.monitor&&g.camera===5?.22:1)*(1+g.elapsed/DURATION*.5);
    if(a.step===0){a.step=1;cue(g,a,'move');}
    if(a.charge>=12&&a.step===1){a.step=2;cue(g,a,'tapping');}
