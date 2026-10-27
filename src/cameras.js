@@ -1,3 +1,4 @@
+import {characterMarkup} from './characters.js';
 // Fixed security-camera lenses and room geometry, in metres.
 export const CAMERA_ROOMS = [
  {key:'lecture',size:[12,10],eye:[-4.8,3.3,-4],target:[0,1,4],actors:[[-1.8,0,3.3],[1.5,0,3.3]],description:'Lecture theatre with a chalkboard, lectern, projection screen and rows of student desks.'},
@@ -124,8 +125,8 @@ export function createCameraRenderer(canvas, cast){
   cast.replaceChildren();
   actors.forEach((actor,i)=>{
    const pos=room.actors[i%room.actors.length],p=project(pos);if(!p)return;
-   const el=document.createElement('div');el.className=`character ${actor.kind}`;el.style.cssText=`--fur:${{bear:'#82735a',rabbit:'#747d88',bird:'#9a925d'}[actor.kind]};left:${p[0]/w*100}%;top:${p[1]/h*100}%;--actor-scale:${Math.min(2.8,1.8*f/p[2]/180)};`;
-   el.innerHTML='<div class="body"></div><div class="head"><i class="ear"></i><i class="ear"></i><div class="eyes"></div><div class="muzzle"></div></div><div class="bow"></div>';
+   const el=document.createElement('div');el.className='camera-actor';el.style.cssText=`left:${p[0]/w*100}%;top:${p[1]/h*100}%;--actor-scale:${Math.min(2.8,1.8*f/p[2]/180)};`;
+   el.innerHTML=characterMarkup(actor,index===3?'angleA':index===4?'angleB':'idle',{mirror:index===3});
    el.setAttribute('role','img');el.setAttribute('aria-label',actor.name);cast.append(el);
   });
  }

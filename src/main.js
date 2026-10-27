@@ -1,8 +1,10 @@
-import {CAMERA_ROOMS,MAP_POSITIONS,createCameraRenderer} from './cameras.js?v=uca-campus';
-import {ROOMS,DURATION,createGame,tick,usage,DEATH_HINTS} from './game.js?v=uca-campus';
+import {characterMarkup,preloadCharacters} from './characters.js';
+import {CAMERA_ROOMS,MAP_POSITIONS,createCameraRenderer} from './cameras.js?v=character-sheets';
+import {ROOMS,DURATION,createGame,tick,usage,DEATH_HINTS} from './game.js?v=character-sheets';
 const $=id=>document.getElementById(id);let game=createGame(),started=false,sound=false,audio,hum,last=0,endingShown=false,scareUntil=0,staticUntil=0;
 const cameraRenderer=createCameraRenderer($('cameraScene'),$('cast'));
-const character=a=>`<div class="character ${a.kind}" style="--fur:${{bear:'#82735a',rabbit:'#747d88',bird:'#9a925d'}[a.kind]}"><div class="body"></div><div class="head"><i class="ear"></i><i class="ear"></i><div class="eyes"></div><div class="muzzle"></div></div><div class="bow">◆</div><small>${a.name}</small></div>`;
+preloadCharacters();
+const character=a=>characterMarkup(a,'doorway');
 ROOMS.forEach((room,i)=>{let b=document.createElement('button');b.textContent=`CAM 0${i+1}`;b.title=room;b.setAttribute('aria-label',`CAM 0${i+1}: ${room}`);b.style.left=MAP_POSITIONS[i][0]+'%';b.style.top=MAP_POSITIONS[i][1]+'%';b.onclick=()=>{if(game.camera===i||game.phase!=='playing')return;game.camera=i;cameraStatic();beep(170,.04);render()};$('mapButtons').append(b)});
 function beep(freq=150,duration=.08){if(!sound||!audio)return;let o=audio.createOscillator(),v=audio.createGain();o.connect(v);v.connect(audio.destination);o.type='triangle';o.frequency.value=freq;v.gain.setValueAtTime(.06,audio.currentTime);v.gain.exponentialRampToValueAtTime(.001,audio.currentTime+duration);o.start();o.stop(audio.currentTime+duration)}
 const cueText={Marlow:{move:'Heavy footsteps — west hall',near:'Low mechanical chuckle — west doorway',retreat:'Heavy footsteps recede — west hall'},Pip:{move:'Metallic tapping — archives',tapping:'Rapid tapping — west hall',dash:'RUNNING FOOTSTEPS — CLOSE WEST DOOR',retreat:'Metallic footsteps recede — west hall'},Dot:{move:'Broken three-note whistle — east hall',near:'Beak clicks — east doorway',retreat:'Whistle recedes — east hall',adapt:'Harsh beak clicks — Dot is resisting the light'}};
@@ -41,7 +43,7 @@ function render(){
 }
 function showJumpscare(){
  const actor=game.actors.find(a=>a.name===game.killer)||game.actors[0];
- $('jumpscare').innerHTML=character(actor);$('jumpscare').classList.remove('hidden');
+ $('jumpscare').innerHTML=characterMarkup(actor,'attack');$('jumpscare').classList.remove('hidden');
  $('status').textContent='SIGNAL INTERRUPTED';scareUntil=performance.now()+1250;
  if(!sound||!audio)return;
  const duration=1.15,now=audio.currentTime;

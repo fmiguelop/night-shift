@@ -1,0 +1,143 @@
+{
+  "imageSize": [
+    1536,
+    1024
+  ],
+  "frameSize": [
+    512,
+    512
+  ],
+  "characters": [
+    {
+      "id": "marlow",
+      "image": "marlow.png",
+      "frames": {
+        "idle": {
+          "x": 0,
+          "y": 0,
+          "width": 512,
+          "height": 512
+        },
+        "angleA": {
+          "x": 512,
+          "y": 0,
+          "width": 512,
+          "height": 512
+        },
+        "angleB": {
+          "x": 1024,
+          "y": 0,
+          "width": 512,
+          "height": 512
+        },
+        "doorway": {
+          "x": 0,
+          "y": 512,
+          "width": 512,
+          "height": 512
+        },
+        "attackAnticipation": {
+          "x": 512,
+          "y": 512,
+          "width": 512,
+          "height": 512
+        },
+        "attack": {
+          "x": 1024,
+          "y": 512,
+          "width": 512,
+          "height": 512
+        }
+      }
+    },
+    {
+      "id": "pip",
+      "image": "pip.png",
+      "frames": {
+        "idle": {
+          "x": 0,
+          "y": 0,
+          "width": 512,
+          "height": 512
+        },
+        "angleA": {
+          "x": 512,
+          "y": 0,
+          "width": 512,
+          "height": 512
+        },
+        "angleB": {
+          "x": 1024,
+          "y": 0,
+          "width": 512,
+          "height": 512
+        },
+        "doorway": {
+          "x": 0,
+          "y": 512,
+          "width": 512,
+          "height": 512
+        },
+        "attackAnticipation": {
+          "x": 512,
+          "y": 512,
+          "width": 512,
+          "height": 512
+        },
+        "attack": {
+          "x": 1024,
+          "y": 512,
+          "width": 512,
+          "height": 512
+        }
+      }
+    },
+    {
+      "id": "dot",
+      "image": "dot.png",
+      "frames": {
+        "idle": {
+          "x": 0,
+          "y": 0,
+          "width": 512,
+          "height": 512
+        },
+        "angleA": {
+          "x": 512,
+          "y": 0,
+          "width": 512,
+          "height": 512
+        },
+        "angleB": {
+          "x": 1024,
+          "y": 0,
+          "width": 512,
+          "height": 512
+        },
+        "doorway": {
+          "x": 0,
+          "y": 512,
+          "width": 512,
+          "height": 512
+        },
+        "attackAnticipation": {
+          "x": 512,
+          "y": 512,
+          "width": 512,
+          "height": 512
+        },
+        "attack": {
+          "x": 1024,
+          "y": 512,
+          "width": 512,
+          "height": 512
+        }
+      }
+    }
+  ],
+  "notes": [
+    "Angled poses face the same direction; use horizontal mirroring to test the opposite direction.",
+    "These are generated test poses, not a smoothly interpolated animation.",
+    "Foot alignment and portrait framing vary slightly; adjust anchors per pose during integration."
+  ]
+}
