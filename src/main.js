@@ -1,10 +1,25 @@
-import {ROOMS,DURATION,createGame,tick,usage} from './game.js';
+import {ROOMS,DURATION,createGame,tick,usage,DEATH_HINTS} from './game.js';
 const $=id=>document.getElementById(id);let game=createGame(),started=false,sound=false,audio,hum,last=0,endingShown=false,scareUntil=0,staticUntil=0;
 const character=a=>`<div class="character ${a.kind}" style="--fur:${{bear:'#82735a',rabbit:'#747d88',bird:'#9a925d'}[a.kind]}"><div class="body"></div><div class="head"><i class="ear"></i><i class="ear"></i><div class="eyes"></div><div class="muzzle"></div></div><div class="bow">◆</div><small>${a.name}</small></div>`;
 ROOMS.forEach((room,i)=>{let b=document.createElement('button');b.textContent=`CAM 0${i+1}`;b.title=room;b.onclick=()=>{if(game.camera===i||game.phase!=='playing')return;game.camera=i;cameraStatic();beep(170,.04);render()};$('mapButtons').append(b)});
 function beep(freq=150,duration=.08){if(!sound||!audio)return;let o=audio.createOscillator(),v=audio.createGain();o.connect(v);v.connect(audio.destination);o.type='triangle';o.frequency.value=freq;v.gain.setValueAtTime(.06,audio.currentTime);v.gain.exponentialRampToValueAtTime(.001,audio.currentTime+duration);o.start();o.stop(audio.currentTime+duration)}
+const cueText={Marlow:{move:'Heavy footsteps — west hall',near:'Low mechanical chuckle — west doorway',retreat:'Heavy footsteps recede — west hall'},Pip:{move:'Metallic tapping — supply closet',tapping:'Rapid tapping — west hall',dash:'RUNNING FOOTSTEPS — CLOSE WEST DOOR',retreat:'Metallic footsteps recede — west hall'},Dot:{move:'Broken three-note whistle — east hall',near:'Beak clicks — east doorway',retreat:'Whistle recedes — east hall',adapt:'Harsh beak clicks — Dot is resisting the light'}};
+let captionUntil=0;
+function actorCue(event){
+ $('soundCaption').textContent=cueText[event.actor][event.type]||'';captionUntil=performance.now()+3500;
+ if(!sound||!audio)return;
+ const now=audio.currentTime,pan=audio.createStereoPanner();pan.pan.value=event.side==='left'?-.75:.75;pan.connect(audio.destination);
+ const notes=event.actor==='Marlow'?[75,60]:event.actor==='Pip'?Array.from({length:event.type==='dash'?10:5},(_,i)=>310+i*35):[660,510,730];
+ notes.forEach((frequency,i)=>{
+  const o=audio.createOscillator(),gain=audio.createGain(),at=now+i*(event.type==='dash'?.09:event.actor==='Marlow'?.3:.16);
+  o.type=event.actor==='Dot'?'sine':event.actor==='Pip'?'square':'triangle';o.frequency.setValueAtTime(frequency,at);o.frequency.exponentialRampToValueAtTime(frequency*.65,at+.12);
+  gain.gain.setValueAtTime(.001,at);gain.gain.exponentialRampToValueAtTime(event.type==='near'||event.type==='dash'?.07:.035,at+.01);gain.gain.exponentialRampToValueAtTime(.001,at+.15);
+  o.connect(gain);gain.connect(pan);o.start(at);o.stop(at+.17);
+ });
+ setTimeout(()=>pan.disconnect(),2500);
+}
 $('sound').onclick=()=>{sound=!sound;if(sound&&!audio){audio=new AudioContext();hum=audio.createOscillator();let v=audio.createGain();v.gain.value=.018;hum.frequency.value=55;hum.connect(v);v.connect(audio.destination);hum.start()}if(audio){if(sound)audio.resume();else audio.suspend()}$('sound').innerHTML=`SOUND ${sound?'ON':'OFF'} <span>◖</span>`};
-function start(){staticUntil=0;$('cameraView').classList.remove('switching');scareUntil=0;$('jumpscare').classList.add('hidden');$('jumpscare').replaceChildren();game=createGame();started=true;endingShown=false;$('intro').classList.add('hidden');$('ending').classList.add('hidden');$('viewport').classList.remove('lost');last=performance.now();render()}
+function start(){captionUntil=0;$('soundCaption').textContent='';staticUntil=0;$('cameraView').classList.remove('switching');scareUntil=0;$('jumpscare').classList.add('hidden');$('jumpscare').replaceChildren();game=createGame();started=true;endingShown=false;$('intro').classList.add('hidden');$('ending').classList.add('hidden');$('viewport').classList.remove('lost');last=performance.now();render()}
 $('start').onclick=start;$('restart').onclick=start;
 function cameraStatic(){staticUntil=performance.now()+280;$('cameraView').classList.add('switching')}
 function toggle(key){if(!started||game.phase!=='playing'||game.power<=0||$('helpDialog').open)return;game[key]=!game[key];if(key==='monitor'&&game.monitor)cameraStatic();beep(key==='monitor'?230:95);render()}
@@ -20,7 +35,7 @@ function render(){
  $('roomName').textContent=ROOMS[game.camera];$('camCode').textContent=`CAM 0${game.camera+1}`;$('cast').innerHTML=game.actors.filter(a=>a.route[a.step]===game.camera).map((a,i)=>character(a).replace('style="',`style="left:${24+i*19}%;`)).join('');
  [...$('mapButtons').children].forEach((b,i)=>{b.classList.toggle('selected',i===game.camera);b.setAttribute('aria-pressed',String(i===game.camera))});
  let hour=Math.min(6,Math.floor(game.elapsed/(DURATION/6)));$('clock').textContent=`${hour||12} AM`;$('power').innerHTML=`${Math.ceil(game.power)}<span>%</span>`;$('batteryFill').style.width=`${game.power}%`;$('usageBars').textContent='▮'.repeat(usage(game));$('status').textContent=!started?'AWAITING NIGHT STAFF':game.power<=0?'POWER FAILURE':game.monitor?'REMOTE SURVEILLANCE ACTIVE':'SECURITY SYSTEM ONLINE';$('feedTime').textContent=`00:${String(Math.floor(game.elapsed/60)).padStart(2,'0')}:${String(Math.floor(game.elapsed%60)).padStart(2,'0')}`;$('viewport').classList.toggle('blackout',game.power<=0);
- if(started&&game.phase!=='playing'&&!endingShown){endingShown=true;const won=game.phase==='won';$('endEyebrow').textContent=won?'SHIFT COMPLETE / 06:00':'CONNECTION LOST';$('endTitle').textContent=won?'6 AM':'CAUGHT.';$('endText').textContent=won?'Morning, at last. You made it through your first shift.':game.killer?`${game.killer} found an open door. Watch the hallway lights and close the door before your visitor enters.`:'The power ran out. Use doors and lights only when you need them.';if(won){$('ending').classList.remove('hidden');beep(520,.5)}else showJumpscare()}
+ if(started&&game.phase!=='playing'&&!endingShown){endingShown=true;const won=game.phase==='won';$('endEyebrow').textContent=won?'SHIFT COMPLETE / 06:00':'CONNECTION LOST';$('endTitle').textContent=won?'6 AM':'CAUGHT.';$('endText').textContent=won?'Morning, at last. You made it through your first shift.':game.killer?DEATH_HINTS[game.killer]:'The power ran out. Use doors and lights only when you need them.';if(won){$('ending').classList.remove('hidden');beep(520,.5)}else showJumpscare()}
 }
 function showJumpscare(){
  const actor=game.actors.find(a=>a.name===game.killer)||game.actors[0];
@@ -36,4 +51,4 @@ function showJumpscare(){
  noise.connect(filter);filter.connect(gain);gain.connect(audio.destination);noise.start();noise.stop(now+duration);
  const scream=audio.createOscillator();scream.type='sawtooth';scream.frequency.setValueAtTime(180,now);scream.frequency.exponentialRampToValueAtTime(65,now+duration);scream.connect(gain);scream.start();scream.stop(now+duration);
 }
-function frame(now){if(staticUntil&&now>=staticUntil){staticUntil=0;$('cameraView').classList.remove('switching');}if(scareUntil&&now>=scareUntil){scareUntil=0;$('jumpscare').classList.add('hidden');$('ending').classList.remove('hidden');}const dt=Math.min(.1,(now-last)/1000);last=now;if(started&&!$('helpDialog').open){tick(game,dt);render()}requestAnimationFrame(frame)}render();requestAnimationFrame(frame);
+function frame(now){if(staticUntil&&now>=staticUntil){staticUntil=0;$('cameraView').classList.remove('switching');}if(scareUntil&&now>=scareUntil){scareUntil=0;$('jumpscare').classList.add('hidden');$('ending').classList.remove('hidden');}const dt=Math.min(.1,(now-last)/1000);last=now;if(started&&!$('helpDialog').open){tick(game,dt);for(const event of game.events.splice(0))actorCue(event);if(captionUntil&&now>=captionUntil){captionUntil=0;$('soundCaption').textContent='';}render()}requestAnimationFrame(frame)}render();requestAnimationFrame(frame);

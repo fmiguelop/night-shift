@@ -24,3 +24,6 @@
 @keyframes camera-roll{from{transform:translateY(-65%)}to{transform:translateY(65%)}}
 @keyframes camera-flicker{0%,93%,96%,100%{opacity:1}94%{opacity:.86}95%{opacity:.96}97%{opacity:.91}}
 @media(prefers-reduced-motion:reduce){.camera-view .cam-room,.camera-noise,.camera-tracking{animation:none}.camera-noise{opacity:.14}.camera-view.switching .cam-room{transform:none}.camera-view.switching .camera-noise{opacity:.3;transition:none}}
+
+.sound-caption{position:absolute;bottom:22px;left:50%;transform:translateX(-50%);z-index:12;max-width:85%;padding:8px 14px;background:rgba(8,12,9,.9);color:#eee8c9;font:12px monospace;text-align:center;pointer-events:none;border:1px solid #6b7254}.sound-caption:empty{display:none}
+#helpDialog{max-height:85vh;overflow:auto}
