@@ -27,3 +27,48 @@
 
 .sound-caption{position:absolute;bottom:22px;left:50%;transform:translateX(-50%);z-index:12;max-width:85%;padding:8px 14px;background:rgba(8,12,9,.9);color:#eee8c9;font:12px monospace;text-align:center;pointer-events:none;border:1px solid #6b7254}.sound-caption:empty{display:none}
 #helpDialog{max-height:85vh;overflow:auto}
+
+/* Immersive play surface: the room is the interface. */
+:root{--lime:#deded5;--muted:#a6a69e;--line:#55554e;color-scheme:dark}
+body{background:#050505;color:#e5e5df;font-family:'Courier New',monospace;font-size:14px;overflow-x:hidden}
+#app{max-width:none;padding:0;min-height:100svh}
+header{position:absolute;top:12px;left:20px;right:20px;height:34px;z-index:13;pointer-events:none}
+header .brand{display:none}header .quiet{margin-left:auto;pointer-events:auto;font-size:11px;color:#c5c5bd;padding:10px}
+footer,.game-top,.intro-side,.intro-meta,.title-star,.eyebrow,.office-label,.status-note,.signal{display:none}
+.game-shell{border:0;box-shadow:none;position:relative;min-height:100svh;background:#050505}
+.viewport{height:100svh;min-height:570px;background:#050505}
+.office{filter:saturate(.16) brightness(.72);background:radial-gradient(ellipse at 50% 50%,#49443b 0,#23231f 45%,#050505 85%)}
+.ceiling{height:15%}.wall{top:15%;bottom:20%}.hall{top:9%;bottom:10%;width:21%;border-color:#252523}.hall>span{font-size:11px;color:#a6a69c;left:12%;bottom:80px}
+.desk{bottom:0;height:22%;left:19%;right:19%}.floor{height:14%}.poster{filter:brightness(.65);top:12%}.paper{top:18%}.desk-monitor{filter:brightness(.6)}
+.grain{opacity:.25}.vignette{box-shadow:inset 0 0 180px 55px #000b}
+.overlay{padding:clamp(28px,7vw,110px);background:#050505e8;gap:0;align-items:center}
+#intro{background:linear-gradient(90deg,#020202 0%,#020202ee 42%,#02020288 100%)}
+.intro-card{width:min(520px,100%)}
+h1{font-family:'Courier New',monospace;font-size:clamp(44px,6vw,80px);font-weight:400;line-height:1.08;letter-spacing:-.025em;margin:0 0 40px;text-shadow:2px 0 #ffffff25}
+h1 em{color:inherit}.intro-card p{font-size:14px;line-height:1.7;color:#b5b5ad;margin:0 0 42px}
+.primary{display:flex;align-items:center;justify-content:flex-start;width:fit-content;min-width:0;min-height:48px;padding:10px 0;background:none;color:#eee;border:0;font:18px 'Courier New',monospace;letter-spacing:0;gap:12px}
+.primary::before{content:'>';opacity:0}.primary:hover,.primary:focus-visible{background:none;color:#fff}.primary:hover::before,.primary:focus-visible::before{opacity:1}.primary span{display:none}
+.hud-time{top:65px;right:28px;gap:6px}.hud-time strong{font:32px 'Courier New',monospace}.hud-time span{font-size:13px;color:#d4d4cc}
+.control-bar{position:absolute;inset:45% 18px auto;height:auto;padding:0;border:0;background:none;z-index:8;pointer-events:none;align-items:start}
+.door-controls{flex-direction:column;gap:10px;padding:0;pointer-events:auto}.control-label{position:static;font-size:11px;color:#d4d4cb;letter-spacing:1px}.right-controls .control-label{text-align:right}
+.door-controls button{height:48px;min-width:92px;padding:0 12px;background:#151513dd;border:1px solid #79796f;color:#e5e5df;gap:10px;font-size:0}
+.door-controls button span{font-size:13px;letter-spacing:0}.door-controls button kbd{font:11px 'Courier New',monospace;background:none;border:0;color:#b5b5a9;padding:0}
+.door-controls button:hover{background:#373731}.door-controls button[aria-pressed=true]{background:#722e26;color:#fff;border-color:#d38376}.door-controls button[aria-pressed=true] kbd{color:#fff}
+.monitor-button{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);height:50px;width:min(330px,40vw);pointer-events:auto;background:#101010c9;border:1px solid #a5a59c;color:#ddd}
+.monitor-button>span{display:none}.monitor-button div{font-size:13px;letter-spacing:1px}.monitor-button small{font-size:10px;color:#bcbcb0;margin-top:5px}.monitor-button:hover,.monitor-button[aria-pressed=true]{background:#373731;border-color:#e1e1d5}
+.status-bar{position:absolute;left:26px;bottom:24px;height:auto;z-index:9;background:none;border:0;padding:0;display:grid;gap:10px;pointer-events:none}
+.power{gap:10px}.power>span,.usage>span{font-size:12px;color:#e1e1d8;letter-spacing:0}.power strong{font-size:22px;color:#eee}.power strong span{font-size:14px}.battery{display:none}.usage{gap:14px}.usage div{font-size:20px;color:#ddd;line-height:1}
+.status-bar .quiet{position:fixed;bottom:25px;right:22px;font-size:11px;color:#d4d4ca;border:0;padding:12px;pointer-events:auto}.quiet span{display:none}
+.camera-view{filter:grayscale(1)}.camera-view .cam-room{filter:grayscale(1) contrast(1.4) brightness(.62)}
+.camera-title{top:65px}.camera-title h2{font:28px 'Courier New',monospace;text-shadow:none}.camera-title>span:last-child,.record{font-size:12px;color:#eee}.map{right:28px;bottom:100px;background:#080808d9;border-color:#93938b;width:250px}.map-title{font-size:11px;color:#ddd}#mapButtons{gap:10px}#mapButtons button{min-height:36px;font:12px 'Courier New',monospace;background:#171717;border-color:#96968e;color:#eee}#mapButtons button.selected{background:#b9b9ad;color:#080808}.you{font-size:12px;color:#ddd}.feed-time{bottom:100px}
+.sound-caption{bottom:100px;font-size:13px;border-color:#88887d;color:#eee}
+.end-card h1{font-size:clamp(52px,8vw,95px)}.end-card p{font-size:14px;color:#ccc}
+dialog{background:#101010;border-color:#8b8b80;color:#ddd;font:14px/1.7 'Courier New',monospace;max-width:600px}dialog h2{font:28px 'Courier New',monospace}
+button:disabled{cursor:default;opacity:.4}button:focus-visible,a:focus-visible{outline:2px solid #eee;outline-offset:4px}::selection{background:#d5d5c5;color:#111}*{scrollbar-color:#77776e #101010}.hud-time,.power{font-variant-numeric:tabular-nums}
+body:has(#intro:not(.hidden)) .control-bar,body:has(#intro:not(.hidden)) .status-bar,body:has(#intro:not(.hidden)) .hud-time{visibility:hidden}
+@media(max-width:900px){#app{padding:0}.viewport{height:100svh;min-height:570px}.overlay{padding:40px}.control-bar{padding:0}.status-bar{padding:0;gap:10px}.door-controls button{padding:0 10px}.status-bar .quiet{font-size:11px}.map{width:220px}}
+@media(max-width:600px){header{left:10px;right:10px;top:6px}.viewport{min-height:620px}.overlay{padding:28px}h1{font-size:49px;margin-bottom:30px}.intro-card{width:100%}.intro-card p{font-size:13px;margin-bottom:30px}.hud-time{right:18px;top:60px}.hud-time strong{font-size:26px}.control-bar{left:10px;right:10px;top:43%;height:auto;align-items:start}.door-controls button{height:44px;min-width:70px}.door-controls button span{display:block;font-size:12px}.control-label{font-size:10px}.monitor-button{bottom:72px;width:180px;height:44px}.monitor-button div{font-size:11px;letter-spacing:0}.monitor-button small{font-size:9px}.status-bar{left:16px;bottom:15px;gap:4px}.power>span,.usage>span{font-size:11px}.power strong{font-size:19px}.status-bar .quiet{right:10px;bottom:15px;font-size:10px}.map{right:14px;bottom:135px;width:190px;padding:10px}#mapButtons{gap:6px;margin-top:10px}#mapButtons button{font-size:11px;min-height:34px}.camera-title{top:65px;left:18px}.camera-title h2{font-size:23px}.feed-time{left:16px;bottom:132px}.sound-caption{bottom:132px;width:90%;max-width:90%;font-size:12px}.desk{left:20%;right:20%}.desk-monitor{width:100px;right:0}.poster{left:5%;width:75px}.paper{display:none}}
+/* Keep the live toolbar clear of the game's camera control. */
+body:has(#impeccable-live-global-bar) .monitor-button{bottom:76px}
+body:has(#monitor[aria-pressed=true]) .door-controls{visibility:hidden}
+@media(max-width:600px){body:has(#impeccable-live-global-bar) .status-bar{bottom:135px}body:has(#impeccable-live-global-bar) .status-bar .quiet{bottom:125px}}

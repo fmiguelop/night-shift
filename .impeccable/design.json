@@ -1,0 +1,87 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-27T23:27:20.512891+00:00",
+  "title": "Design System: The Night Shift",
+  "extensions": {
+    "shadows": [],
+    "motion": [
+      {
+        "name": "button-background",
+        "value": "background .15s",
+        "purpose": "Control hover transition."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "compact",
+        "value": "900px"
+      },
+      {
+        "name": "mobile",
+        "value": "600px"
+      },
+      {
+        "name": "wide",
+        "value": "1500px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary button",
+      "kind": "button",
+      "description": "Primary button",
+      "html": "<button class=\"ds-primary\">BEGIN YOUR SHIFT</button>",
+      "css": ".ds-primary{background:transparent;color:#eee;border:0;padding:10px 0;font:18px \"Courier New\",monospace;min-height:48px;cursor:pointer}.ds-primary::before{content:\"> \";opacity:0}.ds-primary:hover::before,.ds-primary:focus-visible::before{opacity:1}.ds-primary:focus-visible{outline:2px solid #eee;outline-offset:4px}",
+      "refersTo": "button-primary"
+    },
+    {
+      "name": "Control button",
+      "kind": "button",
+      "description": "Control button",
+      "html": "<button class=\"ds-control\" aria-pressed=\"false\">DOOR</button>",
+      "css": ".ds-control{background:#151513dd;color:#e5e5df;border:1px solid var(--line,#55554e);height:40px;padding:0 12px;font:11px monospace;cursor:pointer}.ds-control:hover{background:#373731}.ds-control:focus-visible{outline:2px solid var(--lime,#deded5);outline-offset:4px}.ds-control[aria-pressed=true]{background:#722e26;color:#ffffff}",
+      "refersTo": "button-control"
+    },
+    {
+      "name": "Quiet button",
+      "kind": "button",
+      "description": "Quiet button",
+      "html": "<button class=\"ds-quiet\">HOW TO PLAY</button>",
+      "css": ".ds-quiet{background:transparent;border:0;color:#a2a896;font:10px monospace;letter-spacing:1px;padding:12px;cursor:pointer}.ds-quiet:hover{background:#373731}.ds-quiet:focus-visible{outline:2px solid var(--lime,#deded5);outline-offset:4px}"
+    },
+    {
+      "name": "Camera map",
+      "kind": "nav",
+      "description": "Camera map",
+      "html": "<nav class=\"ds-map\"><button aria-pressed=\"true\">CAM 01</button><button aria-pressed=\"false\">CAM 02</button></nav>",
+      "css": ".ds-map{display:grid;grid-template-columns:1fr 1fr;gap:10px;background:#0d160dc9;padding:15px;border:1px solid #7b8a5e}.ds-map button{background:#1a2615;color:#d2dfbe;border:1px solid #73865b;padding:7px;font:8px monospace;cursor:pointer}.ds-map button[aria-pressed=true]{background:#bbd487;color:#172411}.ds-map button:hover{background:#373731}.ds-map button:focus-visible{outline:2px solid var(--lime,#deded5);outline-offset:4px}"
+    },
+    {
+      "name": "Sound caption",
+      "kind": "custom",
+      "description": "Sound caption",
+      "html": "<div class=\"ds-caption\" role=\"status\">Heavy footsteps \u2014 west hall</div>",
+      "css": ".ds-caption{padding:8px 14px;background:rgba(8,12,9,.9);color:#eee8c9;font:12px monospace;text-align:center;border:1px solid #6b7254}"
+    }
+  ],
+  "narrative": {
+    "northStar": "Haunted maintenance console",
+    "overview": "The user requested a more immersive, minimal horror game in the spirit of FNAF 1. The room fills the screen; the interface recedes into a clock, power readout, hallway controls, and camera toggle. The former decorative website framing and lime accents no longer lead the experience.",
+    "keyCharacteristics": [
+      "Near-monochrome, dim surveillance imagery.",
+      "Sparse title menu and plain operational typography.",
+      "Persistent, readable gameplay states over the room."
+    ],
+    "rules": [],
+    "dos": [
+      "preserve clear active states and lime focus indicators.",
+      "keep camera interference beneath readable map and feed controls.",
+      "retain captions when audio is off."
+    ],
+    "donts": [
+      "infer a new visual identity from the absence of a prior design document.",
+      "treat the current small text sizes as an accessibility standard."
+    ]
+  }
+}

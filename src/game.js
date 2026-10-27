@@ -6,7 +6,7 @@ export const DEATH_HINTS = {
  Dot: 'Short flashes of the east light repel Dot. A long beam makes her adapt; close the east door if she stays.'
 };
 export function createGame(random = Math.random) {
- return {phase:'playing',elapsed:0,power:100,left:false,right:false,leftLight:false,rightLight:false,monitor:false,blackout:0,random,events:[],actors:[
+ return {phase:'playing',elapsed:0,camera:0,power:100,left:false,right:false,leftLight:false,rightLight:false,monitor:false,blackout:0,random,events:[],actors:[
   {name:'Marlow',kind:'bear',route:[0,1,3,6],step:0,wait:0,timer:0,activeAt:0},
   {name:'Pip',kind:'rabbit',route:[2,5,3,6],step:0,wait:0,timer:0,charge:0,dashing:false,activeAt:35},
   {name:'Dot',kind:'bird',route:[0,1,4,7],step:0,wait:0,timer:0,exposure:0,lightHeld:0,activeAt:70}
