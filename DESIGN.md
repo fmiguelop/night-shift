@@ -74,7 +74,9 @@ Door and light buttons sit in vertical edge clusters with visible text labels. D
 
 ### Camera monitor and map
 
-The monitor toggles between office and surveillance. A two-column map holds eight labeled camera buttons; the active camera uses a light fill and dark text. Map controls and titles remain above interference. The initial camera is Show stage (CAM 01).
+The monitor toggles between office and surveillance. A connected floor plan holds eight camera buttons at their room positions, with the office at the bottom between the two corner approaches. The active camera uses a light fill and dark text; the selected room name appears below the plan. Map controls and titles remain above interference. The initial camera is Show stage (CAM 01).
+
+Each feed uses fixed-lens perspective geometry rendered into a canvas: a raised stage, dining tables, backstage equipment, west/east corridors, a supply closet, and two office corners. Room scale, camera placement, props, ceiling panels, and distance shading distinguish the views. Existing characters are projected into room space. Canvas redraws are cached until camera, occupants, or viewport changes. Mobile uses the same room geometry and a smaller floor plan.
 
 ### Status, captions, and help
 

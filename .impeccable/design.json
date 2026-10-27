@@ -53,9 +53,9 @@
     {
       "name": "Camera map",
       "kind": "nav",
-      "description": "Camera map",
-      "html": "<nav class=\"ds-map\"><button aria-pressed=\"true\">CAM 01</button><button aria-pressed=\"false\">CAM 02</button></nav>",
-      "css": ".ds-map{display:grid;grid-template-columns:1fr 1fr;gap:10px;background:#0d160dc9;padding:15px;border:1px solid #7b8a5e}.ds-map button{background:#1a2615;color:#d2dfbe;border:1px solid #73865b;padding:7px;font:8px monospace;cursor:pointer}.ds-map button[aria-pressed=true]{background:#bbd487;color:#172411}.ds-map button:hover{background:#373731}.ds-map button:focus-visible{outline:2px solid var(--lime,#deded5);outline-offset:4px}"
+      "description": "Spatial floor plan with eight camera positions and an office marker. The selected room name remains below the plan.",
+      "html": "<nav class=\"ds-map\" aria-label=\"Building cameras\"><svg viewBox=\"0 0 220 180\" aria-hidden=\"true\"><path d=\"M80 5h60v40H80zM55 60h110v45H55zM15 110h40v30H15zM165 110h40v30h-40zM85 145h50v30H85zM110 45v15M35 110v-25h20M185 110v-25h-20M35 140v20h50M185 140v20h-50\" fill=\"none\" stroke=\"currentColor\"/></svg><button class=\"ds-cam-one\" aria-pressed=\"true\">CAM 01</button><button class=\"ds-cam-two\" aria-pressed=\"false\">CAM 02</button><span>OFFICE</span></nav>",
+      "css": ".ds-map{position:relative;width:220px;background:#070707;color:#deded5;padding:10px;font:11px \"Courier New\",monospace}.ds-map svg{display:block;width:100%}.ds-map button{position:absolute;width:60px;min-height:32px;background:#171717;color:#efefe5;border:1px solid #99998e;cursor:pointer;font:11px monospace}.ds-cam-one{left:90px;top:13px}.ds-cam-two{left:90px;top:73px}.ds-map button[aria-pressed=true]{background:#e0e0d2;color:#111}.ds-map button:hover{background:#46463e;color:#fff}.ds-map button:focus-visible{outline:2px solid #eee;outline-offset:4px}.ds-map span{position:absolute;bottom:19px;left:99px;font-size:8px}"
     },
     {
       "name": "Sound caption",
