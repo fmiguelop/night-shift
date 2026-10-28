@@ -14,14 +14,14 @@ test('all camera lenses produce finite geometry, respond to resize and cache unc
   const renderer=createCameraRenderer(canvas,cast);
   for(let i=0;i<CAMERA_ROOMS.length;i++){
    const before=polygons;
-   renderer.draw(i,[{name:'Marlow',kind:'bear'}]);
+   renderer.draw(i,[{name:'Walter',kind:'human'}]);
    assert.ok(polygons>before+20,`${CAMERA_ROOMS[i].key} must draw room geometry`);
    assert.equal(cast.children.length,1);
    assert.ok(!/NaN|Infinity/.test(cast.children[0].style.cssText));
   }
   const before=polygons;
-  renderer.draw(7,[{name:'Marlow',kind:'bear'}]);assert.equal(polygons,before);
-  resized();renderer.draw(7,[{name:'Marlow',kind:'bear'}]);assert.ok(polygons>before);
+  renderer.draw(7,[{name:'Walter',kind:'human'}]);assert.equal(polygons,before);
+  resized();renderer.draw(7,[{name:'Walter',kind:'human'}]);assert.ok(polygons>before);
   renderer.draw(7,[]);assert.equal(cast.children.length,0);
  }finally{globalThis.ResizeObserver=oldResize;globalThis.document=oldDocument}
 });

@@ -24,7 +24,7 @@ Current implementation facts, rather than permanent requirements:
 
 - HTML, CSS, and JavaScript modules, with no runtime package dependencies.
 - Local browser state; reloading starts fresh.
-- Eight camera rooms and three original characters: Marlow, Pip, and Dot. Each has a distinct threat pattern.
+- Eight camera rooms and three original characters: Walter, Pip, and Dot. Each has a distinct threat pattern.
 - Mouse controls and keyboard shortcuts: Space for cameras, A/D for doors, Q/E for lights.
 - Optional synthesized audio, directional sound captions, camera interference, and jumpscares.
 - Development server: `npm run dev`, serving the project at port 5173. Simulation checks: `npm test`.
@@ -33,7 +33,7 @@ Open decisions: target devices, difficulty and replayability goals, persistence,
 
 ## Brand Commitments
 
-The current product name is The Night Shift. The repository describes it as an original prototype inspired by the camera, door, and power-management loop of Five Nights at Freddy's, using original CSS-drawn characters rather than game assets. The university setting uses UCA (Universidad Centroamericana José Simeón Cañas, El Salvador) as the user-requested visual reference: https://uca.edu.sv/identidad-visual/. Use the published wordmark intact; do not invent official campus geography or imply institutional affiliation. The room plan and horror scenario are fictional.
+The current product name is The Night Shift. The repository describes it as an original prototype inspired by the camera, door, and power-management loop of Five Nights at Freddy's, using generated character sprite sheets, including Walter based on a user-provided portrait. The university setting uses UCA (Universidad Centroamericana José Simeón Cañas, El Salvador) as the user-requested visual reference: https://uca.edu.sv/identidad-visual/. Use the published wordmark intact; do not invent official campus geography or imply institutional affiliation. The room plan and horror scenario are fictional.
 
 ## Evidence on Hand
 

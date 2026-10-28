@@ -1,0 +1,122 @@
+[
+  {
+    "name": "footsteps",
+    "author": "qubodup",
+    "id": "816018",
+    "url": "https://freesound.org/people/qubodup/sounds/816018/",
+    "preview": "https://cdn.freesound.org/previews/816/816018_71257-hq.mp3",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "title": "Freesound - Footsteps w Clothes Loop by qubodup",
+    "excerptStart": 2.0,
+    "excerptDuration": 2.5,
+    "file": "fx-footsteps.mp3"
+  },
+  {
+    "name": "taps",
+    "author": "nellylongarms",
+    "id": "627523",
+    "url": "https://freesound.org/people/nellylongarms/sounds/627523/",
+    "preview": "https://cdn.freesound.org/previews/627/627523_13885248-hq.mp3",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "title": "Freesound - metal_polyhedron_scrape.wav by nellylongarms",
+    "excerptStart": 11.92,
+    "excerptDuration": 1.1,
+    "file": "fx-taps.mp3"
+  },
+  {
+    "name": "whistle",
+    "author": "Darklitstudio",
+    "id": "815110",
+    "url": "https://freesound.org/people/Darklitstudio/sounds/815110/",
+    "preview": "https://cdn.freesound.org/previews/815/815110_12786774-hq.mp3",
+    "license": "https://creativecommons.org/licenses/by-nc/4.0/",
+    "title": "Freesound - Creepy whistle sound effect by Darklitstudio",
+    "excerptStart": 1.1,
+    "excerptDuration": 3.2,
+    "file": "fx-whistle.mp3"
+  },
+  {
+    "name": "clicks",
+    "author": "kyles",
+    "id": "455753",
+    "url": "https://freesound.org/people/kyles/sounds/455753/",
+    "preview": "https://cdn.freesound.org/previews/455/455753_612689-hq.mp3",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "title": "Freesound - door wood old open close creak rattle lock click.flac by kyles",
+    "excerptStart": 2.02,
+    "excerptDuration": 0.18,
+    "file": "fx-clicks.mp3"
+  },
+  {
+    "name": "door",
+    "author": "81120889",
+    "id": "547945",
+    "url": "https://freesound.org/people/81120889/sounds/547945/",
+    "preview": "https://cdn.freesound.org/previews/547/547945_11092266-hq.mp3",
+    "license": "https://creativecommons.org/licenses/by-nc/4.0/",
+    "title": "Freesound - Slam_Heavy_Metal_Door.m4a by 81120889",
+    "excerptStart": 1.88,
+    "excerptDuration": 1.1,
+    "file": "fx-door.mp3"
+  },
+  {
+    "name": "electric",
+    "author": "kyles",
+    "id": "637546",
+    "url": "https://freesound.org/people/kyles/sounds/637546/",
+    "preview": "https://cdn.freesound.org/previews/637/637546_612689-hq.mp3",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "title": "Freesound - fluorescent light turn on hum buzz various.flac by kyles",
+    "excerptStart": 55.36,
+    "excerptDuration": 0.85,
+    "file": "fx-electric.mp3"
+  },
+  {
+    "name": "monitor",
+    "author": "NLM",
+    "id": "262401",
+    "url": "https://freesound.org/people/NLM/sounds/262401/",
+    "preview": "https://cdn.freesound.org/previews/262/262401_488082-hq.mp3",
+    "license": "https://creativecommons.org/licenses/by-nc/4.0/",
+    "title": "Freesound - CRT-ON- Deg- off.WAV by NLM",
+    "excerptStart": 0.14,
+    "excerptDuration": 0.9,
+    "file": "fx-monitor.mp3"
+  },
+  {
+    "name": "metal",
+    "author": "theplax",
+    "id": "546655",
+    "url": "https://freesound.org/people/theplax/sounds/546655/",
+    "preview": "https://cdn.freesound.org/previews/546/546655_12172648-hq.mp3",
+    "license": "https://creativecommons.org/licenses/by/4.0/",
+    "title": "Freesound - Many Coins, Dropped on Hard Surface.wav by theplax",
+    "excerptStart": 4.42,
+    "excerptDuration": 1.4,
+    "file": "fx-metal.mp3"
+  },
+  {
+    "name": "creak",
+    "author": "LoafDV",
+    "id": "238288",
+    "url": "https://freesound.org/people/LoafDV/sounds/238288/",
+    "preview": "https://cdn.freesound.org/previews/238/238288_1554038-hq.mp3",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "title": "Freesound - Quiet Creak by LoafDV",
+    "excerptStart": 0,
+    "excerptDuration": 2.8,
+    "file": "fx-creak.mp3"
+  },
+  {
+    "name": "power",
+    "author": "iainmccurdy",
+    "id": "759257",
+    "url": "https://freesound.org/people/iainmccurdy/sounds/759257/",
+    "preview": "https://cdn.freesound.org/previews/759/759257_3655844-hq.mp3",
+    "license": "https://creativecommons.org/licenses/by/4.0/",
+    "title": "Freesound - Buzzing Relay by iainmccurdy",
+    "excerptStart": 23.04,
+    "excerptDuration": 1.8,
+    "file": "fx-power.mp3"
+  }
+]

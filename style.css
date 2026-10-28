@@ -114,13 +114,24 @@ body:has(#monitor[aria-pressed=true]) .door-controls{visibility:hidden}
 
 /* Shared six-pose atlases. The square wrapper clips exactly one sheet cell. */
 .character.sprite-character{width:190px;height:190px;filter:drop-shadow(7px 10px 8px #0009)}
-.sprite-frame{display:block;width:100%;height:100%;background-image:var(--sheet);background-size:300% 200%;background-position:var(--frame-x) var(--frame-y);background-repeat:no-repeat;transform:scaleX(var(--facing,1))}
+.sprite-frame{display:block;position:relative;top:calc(100% - var(--frame-height,100%));width:var(--frame-width,100%);height:var(--frame-height,100%);margin-inline:auto;background-image:var(--sheet);background-size:300% var(--sheet-height,200%);background-position:var(--frame-x) var(--frame-y);background-repeat:no-repeat;transform:scaleX(var(--facing,1))}
 #cast .camera-actor{position:absolute;width:190px;height:190px;transform:translate(-50%,-98%) scale(var(--actor-scale,1));transform-origin:50% 98%;filter:grayscale(1) brightness(.68) contrast(1.15)}
 #cast .camera-actor .sprite-character{position:static;filter:drop-shadow(5px 8px 6px #0008)}
 .visitor .sprite-character{left:50%;bottom:20px;width:300px;height:300px;transform:translateX(-50%);filter:brightness(.75) drop-shadow(6px 9px 8px #000a)}
 .jumpscare .character.sprite-character{position:relative;left:auto;bottom:auto;width:min(90vw,80vh);height:auto;aspect-ratio:1;transform:none;transform-origin:center;animation:sprite-lunge 1.25s ease-out forwards}
 .sprite-attack .sprite-frame{animation:sprite-attack-frames 1.25s steps(1,end) forwards}
 @keyframes sprite-attack-frames{0%{background-position:50% 100%}18%,100%{background-position:100% 100%}}
-@keyframes sprite-lunge{from{scale:.8}to{scale:1.35}}
-@media(prefers-reduced-motion:reduce){.jumpscare .character.sprite-character{animation:none;transform:none}.sprite-attack .sprite-frame{animation:none;background-position:100% 100%}}
+@keyframes sprite-lunge{0%{scale:.72;translate:0 6%;rotate:0deg}14%{scale:.9;translate:-2% 2%;rotate:-3deg}30%{scale:1.04;translate:1% 0;rotate:2deg}48%{scale:1.14;translate:-2% 1%;rotate:-2deg}70%{scale:1.28;translate:1% -1%;rotate:1deg}100%{scale:1.35;translate:0 -2%;rotate:0deg}}
+.walter-attack .attack-frame{position:absolute;inset:auto 0 0;display:block;width:100%;height:var(--attack-height,100%);background-image:var(--attack-image);background-repeat:no-repeat;background-size:var(--attack-size,contain);background-position:var(--attack-position,center bottom);opacity:0;animation-duration:1.25s;animation-timing-function:steps(1,end);animation-fill-mode:forwards}
+.attack-frame:nth-child(1){animation-name:attack-windup}
+.attack-frame:nth-child(2){animation-name:attack-lunge}
+.attack-frame:nth-child(3){animation-name:attack-shout}
+.attack-frame:nth-child(4){animation-name:attack-grab}
+.attack-frame:nth-child(5){animation-name:attack-impact}
+@keyframes attack-windup{0%{opacity:1}14%,100%{opacity:0}}
+@keyframes attack-lunge{0%{opacity:0}14%{opacity:1}30%,100%{opacity:0}}
+@keyframes attack-shout{0%{opacity:0}30%{opacity:1}48%,100%{opacity:0}}
+@keyframes attack-grab{0%{opacity:0}48%{opacity:1}70%,100%{opacity:0}}
+@keyframes attack-impact{0%{opacity:0}70%,100%{opacity:1}}
+@media(prefers-reduced-motion:reduce){.jumpscare .character.sprite-character{animation:none;transform:none;scale:1;translate:none;rotate:none}.sprite-attack .sprite-frame{animation:none;background-position:100% 100%}.walter-attack .attack-frame{animation:none;opacity:0}.walter-attack .attack-frame:last-child{opacity:1}}
 #cast .camera-actor .sprite-character{left:auto;top:auto;bottom:auto;transform:none}

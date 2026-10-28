@@ -9,46 +9,73 @@
   ],
   "characters": [
     {
-      "id": "marlow",
-      "image": "marlow.png",
+      "id": "walter",
+      "image": "walter.png",
       "frames": {
         "idle": {
           "x": 0,
           "y": 0,
           "width": 512,
-          "height": 512
+          "height": 560
         },
         "angleA": {
           "x": 512,
           "y": 0,
           "width": 512,
-          "height": 512
+          "height": 560
         },
         "angleB": {
           "x": 1024,
           "y": 0,
           "width": 512,
-          "height": 512
+          "height": 560
         },
         "doorway": {
           "x": 0,
-          "y": 512,
+          "y": 560,
           "width": 512,
-          "height": 512
+          "height": 464
         },
         "attackAnticipation": {
           "x": 512,
-          "y": 512,
+          "y": 560,
           "width": 512,
-          "height": 512
+          "height": 464
         },
         "attack": {
           "x": 1024,
-          "y": 512,
+          "y": 560,
           "width": 512,
-          "height": 512
+          "height": 464
         }
-      }
+      },
+      "name": "Walter",
+      "reference": "User-provided portrait: black cap, beard, black shirt and smartwatch.",
+      "attackSequence": [
+        {
+          "image": "walter.png",
+          "frame": "attackAnticipation",
+          "at": 0
+        },
+        {
+          "image": "walter-attack-lunge.png",
+          "at": 0.14
+        },
+        {
+          "image": "walter.png",
+          "frame": "attack",
+          "at": 0.3
+        },
+        {
+          "image": "walter-attack-grab.png",
+          "at": 0.48
+        },
+        {
+          "image": "walter-attack-impact.png",
+          "at": 0.7
+        }
+      ],
+      "attackDurationMs": 1250
     },
     {
       "id": "pip",
@@ -136,8 +163,9 @@
     }
   ],
   "notes": [
-    "Angled poses face the same direction; use horizontal mirroring to test the opposite direction.",
+    "Pip and Dot have similar-facing angled variants; Walter has opposing angled views. Horizontal mirroring is available for room placement.",
     "These are generated test poses, not a smoothly interpolated animation.",
-    "Foot alignment and portrait framing vary slightly; adjust anchors per pose during integration."
+    "Foot alignment and portrait framing vary slightly; adjust anchors per pose during integration.",
+    "Walter uses 512 × 560 top-row frames and 512 × 464 bottom-row frames. The renderer preserves source proportions inside its square display frame; frameSize is the default for Pip and Dot."
   ]
 }

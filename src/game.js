@@ -1,13 +1,13 @@
 export const ROOMS = ['Lecture hall','Library','Teaching lab','West corridor','East corridor','Archives','West stairwell','Faculty lobby'];
 export const DURATION = 240;
 export const DEATH_HINTS = {
- Marlow: 'Marlow advances faster while your monitor is raised. Keep checks brief and close the west door when his chuckle reaches the office.',
+ Walter: 'Walter advances faster while your monitor is raised. Keep checks brief and close the west door when his footsteps reach the office.',
  Pip: 'Pip’s running footsteps mean a dash has begun. Close the west door immediately. Checking the archives slows his buildup.',
  Dot: 'Short flashes of the east light repel Dot. A long beam makes her adapt; close the east door if she stays.'
 };
 export function createGame(random = Math.random) {
  return {phase:'playing',elapsed:0,camera:0,power:100,left:false,right:false,leftLight:false,rightLight:false,monitor:false,blackout:0,random,events:[],actors:[
-  {name:'Marlow',kind:'bear',route:[0,1,3,6],step:0,wait:0,timer:0,activeAt:0},
+  {name:'Walter',kind:'human',route:[0,1,3,6],step:0,wait:0,timer:0,activeAt:0},
   {name:'Pip',kind:'rabbit',route:[2,5,3,6],step:0,wait:0,timer:0,charge:0,dashing:false,activeAt:35},
   {name:'Dot',kind:'bird',route:[0,1,4,7],step:0,wait:0,timer:0,exposure:0,lightHeld:0,activeAt:70}
  ]};
@@ -50,8 +50,8 @@ export function tick(g,dt){
    if(a.dashing){a.timer+=dt;if(a.timer>=2.5){a.step=3;a.wait=0;}}
    continue;
   }
-  a.timer+=dt*(a.kind==='bear'&&g.monitor?1.65:1);
-  const interval=a.kind==='bear'?10:8;
+  a.timer+=dt*(a.kind==='human'&&g.monitor?1.65:1);
+  const interval=a.kind==='human'?10:8;
   if(a.timer>=interval){a.timer%=interval;if(g.random()<.4+g.elapsed/DURATION*.35){a.step++;a.wait=0;cue(g,a,a.step===3?'near':'move');}}
  }
 }
