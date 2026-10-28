@@ -1,4 +1,4 @@
-export const ROOMS = ['Lecture hall','Library','Teaching lab','West corridor','East corridor','Archives','West stairwell','Faculty lobby'];
+export const ROOMS = ['Aula magna','Biblioteca','Laboratorio','Pasillo oeste','Pasillo este','Archivo','Escalera oeste','Vestíbulo docente'];
 export const DURATION = 240;
 export const NIGHT_COUNT = 5;
 // Each row defines a baseline and a gradual rise over the four-minute shift.
@@ -16,9 +16,9 @@ export function difficultyAt(night,elapsed){
  return {...config,moveChance:config.moveStart+(config.moveEnd-config.moveStart)*progress,pipRate:config.pipStart+(config.pipEnd-config.pipStart)*progress};
 }
 export const DEATH_HINTS = {
- Walter: 'Walter advances faster while your monitor is raised. Keep checks brief and close the west door when his footsteps reach the office.',
- Pip: 'Pip’s running footsteps mean a dash has begun. Close the west door immediately. Checking the archives slows his buildup.',
- Dot: 'Short flashes of the east light repel Dot. A long beam makes her adapt; close the east door if she stays.'
+ Walter: 'Walter avanza más rápido mientras usás el monitor. Revisá las cámaras brevemente y cerrá la puerta oeste cuando sus pasos lleguen a la oficina.',
+ Pip: 'Si escuchás correr a Pip, ya comenzó su carrera. Cerrá la puerta oeste de inmediato. Revisar el archivo retrasa su ataque.',
+ Dot: 'Los destellos breves de la luz este ahuyentan a Dot. Si la dejás encendida, se adapta; cerrá la puerta este si no se va.'
 };
 export function createGame(random = Math.random, night = 1) {
  night=normalizeNight(night);

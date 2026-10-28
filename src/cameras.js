@@ -1,14 +1,14 @@
 import {characterMarkup} from './characters.js';
 // Fixed security-camera lenses and room geometry, in metres.
 export const CAMERA_ROOMS = [
- {key:'lecture',size:[12,10],eye:[-4.8,3.3,-4],target:[0,1,4],actors:[[-1.8,0,3.3],[1.5,0,3.3]],description:'Lecture theatre with a chalkboard, lectern, projection screen and rows of student desks.'},
- {key:'library',size:[14,17],eye:[5.7,3.5,-6.8],target:[-1,0,5],actors:[[-.15,0,2],[3.2,0,4]],description:'University library with tall book stacks, reading tables and study lamps.'},
- {key:'lab',size:[8,10],eye:[-3.2,3,-3.8],target:[1,1,3],actors:[[.3,0,1.6],[-.3,0,3.2]],description:'Teaching laboratory with experiment benches, sinks and glassware.'},
- {key:'west-hall',size:[4.4,19],eye:[1.5,3,-8],target:[-.6,.7,7],actors:[[0,0,4],[.5,0,7]],description:'West academic corridor with classroom doors, noticeboards and student lockers.'},
- {key:'east-hall',size:[4.4,19],eye:[-1.5,3,-8],target:[.5,.6,8],actors:[[0,0,5],[.5,0,7]],description:'East science corridor with laboratory doors, display cabinets and exposed pipes.'},
- {key:'archives',size:[7,8],eye:[2.7,2.9,-3],target:[-1,.8,2],actors:[[.3,0,1],[-.3,0,.3]],description:'University archives with filing cabinets, document boxes and shelving.'},
- {key:'west-corner',size:[6,7],eye:[-2.5,3,-2.7],target:[1,.6,2.5],actors:[[.5,0,1.1],[-.7,0,2]],description:'West stairwell landing with stairs, handrails and an academic noticeboard.'},
- {key:'east-corner',size:[6,7],eye:[2.5,3,-2.7],target:[-1,.6,2.5],actors:[[-.5,0,1.1],[.7,0,2]],description:'Faculty lobby with reception counter, mail cubbies and waiting seats.'}
+ {key:'lecture',size:[12,10],eye:[-4.8,3.3,-4],target:[0,1,4],actors:[[-1.8,0,3.3],[1.5,0,3.3]],description:'Aula magna con pizarra, atril, pantalla de proyección y filas de pupitres.'},
+ {key:'library',size:[14,17],eye:[5.7,3.5,-6.8],target:[-1,0,5],actors:[[-.15,0,2],[3.2,0,4]],description:'Biblioteca universitaria con estantes altos, mesas de lectura y lámparas de estudio.'},
+ {key:'lab',size:[8,10],eye:[-3.2,3,-3.8],target:[1,1,3],actors:[[.3,0,1.6],[-.3,0,3.2]],description:'Laboratorio con mesas de experimentos, lavabos y material de vidrio.'},
+ {key:'west-hall',size:[4.4,19],eye:[1.5,3,-8],target:[-.6,.7,7],actors:[[0,0,4],[.5,0,7]],description:'Pasillo académico oeste con puertas de aulas, carteleras y casilleros.'},
+ {key:'east-hall',size:[4.4,19],eye:[-1.5,3,-8],target:[.5,.6,8],actors:[[0,0,5],[.5,0,7]],description:'Pasillo de ciencias este con puertas de laboratorios, vitrinas y tuberías expuestas.'},
+ {key:'archives',size:[7,8],eye:[2.7,2.9,-3],target:[-1,.8,2],actors:[[.3,0,1],[-.3,0,.3]],description:'Archivo universitario con archivadores, cajas de documentos y estanterías.'},
+ {key:'west-corner',size:[6,7],eye:[-2.5,3,-2.7],target:[1,.6,2.5],actors:[[.5,0,1.1],[-.7,0,2]],description:'Descanso de la escalera oeste con gradas, pasamanos y una cartelera académica.'},
+ {key:'east-corner',size:[6,7],eye:[2.5,3,-2.7],target:[-1,.6,2.5],actors:[[-.5,0,1.1],[.7,0,2]],description:'Vestíbulo docente con recepción, casilleros de correspondencia y asientos de espera.'}
 ];
 export const MAP_POSITIONS = [[49,9],[49,32],[15,14],[19,53],[79,53],[15,34],[25,77],[73,77]];
 const sub=(a,b)=>a.map((v,i)=>v-b[i]);

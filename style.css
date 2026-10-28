@@ -173,3 +173,74 @@ body:has(#monitor[aria-pressed=true]) .door-controls{visibility:hidden}
 .end-card #backToMenu{margin-top:14px;padding:12px 0;color:#ccc;font-size:12px}
 @media(max-width:600px){#intro{padding:52px 42px 18px}.menu-portrait img{left:calc(92% - 68vh);filter:grayscale(1) brightness(.38) contrast(1.55)}.menu-shade{background:linear-gradient(90deg,#000c,#0006 50%,#0001),linear-gradient(0deg,#000 0%,transparent 35%,#0002)}#intro h1{font-size:30px}.menu-actions{margin-top:68px}.menu-action{font-size:21px}.menu-static{opacity:.16}}
 @media(max-height:650px){#intro{padding-top:32px}#intro h1{font-size:28px}.menu-actions{margin-top:40px;gap:6px}.menu-bottom{padding-top:24px}.night-picker{margin-top:4px}}
+
+/* Hallway switch plates share the title menu's restrained black-and-white language. */
+.control-bar .door-controls{width:122px;padding:10px 8px 8px;gap:4px;background:#080808ed;border:1px solid #44443e}
+.control-bar .control-label{font:10px/1.4 'Courier New',monospace;letter-spacing:.1em;color:#b8b8af;text-align:left;margin:0 3px 4px}
+.control-bar .door-controls button{position:relative;display:flex;align-items:center;width:100%;min-width:0;height:62px;padding:10px 12px 10px 24px;border:0;border-top:1px solid #41413b;background:transparent;color:#e5e5df;text-align:left;transition:background .12s,color .12s}
+.control-bar .door-controls button::before{content:'';position:absolute;left:9px;top:15px;width:4px;height:8px;background:#56564e}
+.control-bar .door-controls .control-copy{display:flex;flex-direction:column;gap:5px}
+.control-bar .door-controls .control-name{font:14px/1 'Courier New',monospace;letter-spacing:.04em}
+.control-bar .door-controls .control-state{font:10px/1 'Courier New',monospace;letter-spacing:.04em;color:#aaa99f}
+.control-bar .door-controls kbd{position:absolute;right:7px;top:12px;display:block;font:10px/1 'Courier New',monospace;padding:0;background:none;border:0;color:#a5a59b}
+.control-bar .door-controls button:hover:not(:disabled){background:#22221e}
+.control-bar .door-controls button[aria-pressed=true]{background:#281511;color:#f4d5ce}
+.control-bar .door-controls button[aria-pressed=true]::before{background:#e5a396}
+.control-bar .door-controls button[aria-pressed=true] .control-state,.control-bar .door-controls button[aria-pressed=true] kbd{color:#e5a396}
+.control-bar .door-controls button[aria-pressed=true]:hover:not(:disabled){background:#3c1f18}
+.control-bar .door-controls button[id$=Light][aria-pressed=true]{background:#dadad0;color:#141411}
+.control-bar .door-controls button[id$=Light][aria-pressed=true]::before{background:#37372f}
+.control-bar .door-controls button[id$=Light][aria-pressed=true] .control-state,.control-bar .door-controls button[id$=Light][aria-pressed=true] kbd{color:#37372f}
+.control-bar .door-controls button[id$=Light][aria-pressed=true]:hover:not(:disabled){background:#eeeee5}
+.control-bar .door-controls button:active:not(:disabled){translate:0 1px}
+.control-bar .door-controls button:focus-visible{outline:2px solid #eee;outline-offset:2px;z-index:1}
+.status-bar #help{min-height:44px;padding:12px 4px;background:none;color:#c4c4b9;letter-spacing:.02em}
+.status-bar #help::before{content:'>>';margin-right:8px;opacity:0}
+.status-bar #help:hover,.status-bar #help:focus-visible{color:#fff;background:none}
+.status-bar #help:hover::before,.status-bar #help:focus-visible::before{opacity:1}
+#closeHelp{min-height:44px;color:#e5e5df;border:1px solid #55554e;padding:10px 14px;margin:0 0 16px 16px}
+#closeHelp:hover{background:#252521}
+@media(max-width:600px){.control-bar .door-controls{width:94px;padding:8px 5px 5px}.control-bar .control-label{font-size:9px;margin-left:4px;letter-spacing:.06em}.control-bar .door-controls button{height:56px;padding-left:19px;padding-right:4px}.control-bar .door-controls button::before{left:6px;top:13px;width:3px}.control-bar .door-controls .control-name{font-size:12px}.control-bar .door-controls .control-state{font-size:9px;letter-spacing:0}.control-bar .door-controls kbd{right:4px;top:11px;font-size:9px}.status-bar #help{right:12px;bottom:12px;font-size:10px}}
+@media(prefers-reduced-motion:reduce){.control-bar .door-controls button{transition:none}.control-bar .door-controls button:active:not(:disabled){translate:none}}
+
+/* Optional call records: a quiet, legible document above the paused office. */
+.status-bar #transcript{right:22px;bottom:25px;min-height:44px;padding:12px 4px;background:none;color:#c4c4b9;letter-spacing:.02em}
+.status-bar #transcript::before{content:'>>';margin-right:8px;opacity:0}
+.status-bar #transcript:hover,.status-bar #transcript:focus-visible{color:#fff;background:none}
+.status-bar #transcript:hover::before,.status-bar #transcript:focus-visible::before{opacity:1}
+.status-bar #transcript:disabled{opacity:.4;cursor:default}
+#transcriptDialog{color-scheme:light;width:min(740px,calc(100vw - 32px));max-width:none;height:min(840px,calc(100svh - 48px));max-height:calc(100svh - 48px);padding:0;border:0;border-radius:0;background:#cbc9bf;color:#272722;box-shadow:8px 16px 48px #0008;overflow:hidden;scrollbar-color:#85847a #cbc9bf}
+#transcriptDialog[open]{display:grid;grid-template-rows:auto minmax(0,1fr) auto}
+#transcriptDialog::backdrop{background:#000c}
+.transcript-heading{padding:44px 52px 18px}
+#transcriptDialog h2{font:700 clamp(17px,2.8vw,20px)/1.4 'Courier New',monospace;margin:0 0 6px;overflow-wrap:anywhere}
+.transcript-heading p{margin:0;color:#494940;font-size:13px;line-height:1.5}
+.transcript-heading::after{content:'';display:block;width:100%;margin-top:22px;border-bottom:1px solid #77776c}
+.transcript-body{min-height:0;overflow-y:auto;overscroll-behavior:contain;padding:0 52px 12px;font-size:15px;line-height:1.7;overflow-wrap:anywhere}
+.transcript-body p{max-width:70ch;margin:0 0 18px}
+.transcript-body .transcript-annotation{color:#505047;font-size:13px;font-style:normal}
+.transcript-body .transcript-automated{font-weight:bold}
+#transcriptDialog :focus-visible{outline:2px solid #33332c;outline-offset:3px}
+#transcriptDialog .transcript-body:focus-visible{outline-offset:-6px}
+.transcript-body::selection,.transcript-body ::selection{background:#373730;color:#eeede6}
+.transcript-actions{display:flex;justify-content:flex-end;padding:8px 44px 20px}
+#closeTranscript{min-height:44px;padding:10px 8px;background:transparent;color:#35352d;border:0;font-size:13px;line-height:1.5;text-decoration:underline;text-underline-offset:4px}
+#closeTranscript:hover{background:transparent;color:#000;text-decoration-thickness:2px}
+@media(max-width:600px){.status-bar #transcript{right:12px;bottom:12px;font-size:11px}#transcriptDialog{width:calc(100vw - 24px);height:calc(100svh - 32px);max-height:calc(100svh - 32px)}.transcript-heading{padding:28px 24px 18px}.transcript-heading::after{margin-top:18px}.transcript-body{padding:0 24px 12px;font-size:14px;line-height:1.7}.transcript-actions{padding:4px 16px 12px}}
+@media(max-width:600px){body:has(#impeccable-live-global-bar) .status-bar #transcript{bottom:125px}}
+
+/* Spanish ending copy needs room at desktop and phone widths. */
+.end-card h1{font-size:clamp(28px,6vw,72px);overflow-wrap:anywhere}
+
+
+
+/* Instructions and audio acknowledgments are separate main-menu documents. */
+.menu-dialog{width:min(640px,calc(100vw - 32px));max-width:none;max-height:85svh;overflow-y:auto;overscroll-behavior:contain;padding:24px 30px;scrollbar-color:#75756d #171717}
+.menu-dialog .dialog-close{float:none;display:block;margin-left:auto;min-height:44px;min-width:80px;color:#ddd}
+.menu-dialog h2{font-size:26px;line-height:1.3;margin:8px 0 24px}
+.menu-dialog h3{font-size:16px;line-height:1.5;margin:28px 0 12px}
+.menu-dialog a{color:#deded5;text-underline-offset:3px}
+.menu-dialog li{margin-bottom:14px;overflow-wrap:anywhere}
+@media(max-width:600px){.menu-dialog{padding:16px 22px}.menu-dialog h2{font-size:24px}}
+.menu-dialog #closeHelp,.menu-dialog #closeCredits{margin:0 0 0 auto;border:1px solid #55554e;padding:10px 14px}
+.menu-dialog #closeCredits:hover{background:#252521}

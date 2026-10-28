@@ -10,6 +10,11 @@ colors:
   control: "#151513dd"
   control-hover: "#373731"
   uca-site-blue: "#003c71"
+  hallway-plate: "#080808ed"
+  hallway-door-closed: "#281511"
+  hallway-door-text: "#f4d5ce"
+  hallway-light-on: "#dadad0"
+  hallway-light-text: "#141411"
 typography:
   display:
     fontFamily: "Courier New, monospace"
@@ -22,6 +27,16 @@ typography:
     fontSize: "clamp(20px, 2vw, 26px)"
     fontWeight: 400
     lineHeight: 1.2
+  hallway-label:
+    fontFamily: "Courier New, monospace"
+    fontSize: "14px"
+    lineHeight: 1
+    letterSpacing: "0.04em"
+  hallway-state:
+    fontFamily: "Courier New, monospace"
+    fontSize: "10px"
+    lineHeight: 1
+    letterSpacing: "0.04em"
   body:
     fontFamily: "Courier New, monospace"
     fontSize: "14px"
@@ -35,6 +50,18 @@ components:
     backgroundColor: "#090909f5"
     textColor: "{colors.text}"
     padding: "16px 20px"
+  hallway-switch:
+    backgroundColor: "transparent"
+    textColor: "{colors.text}"
+    typography: "{typography.hallway-label}"
+    height: "62px"
+    padding: "10px 12px 10px 24px"
+  hallway-door-closed:
+    backgroundColor: "{colors.hallway-door-closed}"
+    textColor: "{colors.hallway-door-text}"
+  hallway-light-on:
+    backgroundColor: "{colors.hallway-light-on}"
+    textColor: "{colors.hallway-light-text}"
   button-control:
     backgroundColor: "{colors.control}"
     textColor: "{colors.text}"
@@ -55,7 +82,7 @@ The user requested a more immersive, minimal horror game in the spirit of FNAF 1
 
 ## Colors
 
-The `lime` custom property remains named for compatibility but now holds an off-white. Text and borders use warm gray neutrals on black. A muted red (`#722e26`) identifies a closed door. Camera images are grayscale; existing original character colors remain underneath the scene filters.
+The `lime` custom property remains named for compatibility but now holds an off-white. Text and borders use warm gray neutrals on black. Hallway plates use near-black fills; closed doors use a dark red face with pale red text, while active hallway lights use off-white with dark text. Camera images are grayscale; existing original character colors remain underneath the scene filters.
 
 The user selected [UCA’s visual identity](https://uca.edu.sv/identidad-visual/) as the campus reference. The published black wordmark is used intact as an image in the security office. Blue-and-white Spanish room signs use `uca-site-blue`, observed on the official website; the complete manual was login-gated, so this is not a verified manual color specification. Camera feeds retain low saturation, while controls remain neutral. The fictional room plan does not claim to reproduce the real campus. Asset sources are recorded in `assets/uca/SOURCE.md`.
 
@@ -95,7 +122,11 @@ A 320 × 180 canvas supplies pixelated television static at no more than eight f
 
 ### Hallway controls
 
-Door and light buttons sit in vertical edge clusters with visible text labels. Desktop hints show keyboard shortcuts. Pressed controls use muted red, white text, and a lighter border. Disabled controls reduce opacity.
+West and east switch plates place Door above Light on both sides. Each plate is 122px wide with 62px-high switches, shrinking to 94px wide with 56px-high switches at widths up to 600px. Thin gray seams, narrow gray indicator marks, and transparent resting switch faces keep the near-black plate quiet. Labels use the hallway-label token and readouts use hallway-state; mobile reduces them to 12px and 9px respectively.
+
+Door readouts show OPEN or CLOSED; light readouts show OFF or ON. All four show NO POWER at zero power. Closed doors use the dark red state, while lit hallways use the off-white state. State text supplements color. West shortcuts are A/Q and east shortcuts are D/E, visible on mobile as well as desktop. Side-specific accessible names, `aria-keyshortcuts`, and `aria-pressed` identify each switch and its state.
+
+Hover brightens the resting face or the current state color. Keyboard focus uses a 2px off-white outline with a 2px offset. Pressing shifts a switch down 1px; reduced motion removes that shift and the 120ms color/background transitions. Disabled controls retain the existing reduced opacity and gameplay restrictions.
 
 ### Camera monitor and map
 
@@ -105,7 +136,7 @@ Each feed uses fixed-lens perspective geometry rendered into a canvas: a lecture
 
 ### Status, captions, and help
 
-Power and usage remain visible during play. Sound is on by default and starts with the player’s first shift. The HUD shows the active night. Help pauses the game in a scrolling dialog; endings offer the next night after a win, the same night after a loss, and a main-menu action for replay selection. Night 5 completion offers a replay and acknowledges the full week. Reduced-motion rules remain in force.
+Power and usage remain visible during play. Help is an unboxed text action with a 44px minimum target and a leading `>>` marker on hover or keyboard focus. The dialog’s bordered Close action also has a 44px minimum target. Sound is on by default and starts with the player’s first shift. The HUD shows the active night. Help pauses the game in a scrolling dialog; endings offer the next night after a win, the same night after a loss, and a main-menu action for replay selection. Night 5 completion offers a replay and acknowledges the full week. Reduced-motion rules remain in force.
 
 ## Do's and Don'ts
 
@@ -114,3 +145,9 @@ Power and usage remain visible during play. Sound is on by default and starts wi
 - **Do** keep camera interference beneath readable controls.
 - **Don't** restore promotional header/footer framing or bright accent branding over play.
 - **Don't** remove gameplay information to achieve visual minimalism.
+
+### Call transcripts
+
+The user-selected photocopied call log uses muted paper (#cbc9bf), dark ink (#272722), and Courier New with a monospace fallback. Body text is 15px on desktop and 14px at widths up to 600px, with 1.7 line height, generous margins, and compact recording annotations. This treatment belongs to the transcript component.
+
+The native modal pauses gameplay and audio and supports Escape dismissal. Its responsive document body scrolls while the heading and quiet, underlined Close transcript action remain visible. The close action has a 44px minimum target and visible keyboard focus.

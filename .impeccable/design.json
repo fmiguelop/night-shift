@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-10-28T02:08:19.949063+00:00",
+  "generatedAt": "2026-10-28T02:16:07.396686+00:00",
   "title": "Design System: The Night Shift",
   "extensions": {
     "shadows": [],
@@ -14,6 +14,11 @@
         "name": "menu-static",
         "value": "125ms minimum between canvas redraws",
         "purpose": "Menu-only television interference at up to 8fps; stopped during play and a fixed frame with reduced motion."
+      },
+      {
+        "name": "hallway-switch",
+        "value": "background .12s,color .12s; translate:0 1px on press",
+        "purpose": "Hallway switch feedback; transitions and press displacement are removed for reduced motion."
       }
     ],
     "breakpoints": [
@@ -52,19 +57,19 @@
       "refersTo": "button-primary"
     },
     {
-      "name": "Control button",
+      "name": "Hallway switch plate",
       "kind": "button",
-      "description": "Control button",
-      "html": "<button class=\"ds-control\" aria-pressed=\"false\">DOOR</button>",
-      "css": ".ds-control{background:#151513dd;color:#e5e5df;border:1px solid var(--line,#55554e);height:40px;padding:0 12px;font:11px monospace;cursor:pointer}.ds-control:hover{background:#373731}.ds-control:focus-visible{outline:2px solid var(--lime,#deded5);outline-offset:4px}.ds-control[aria-pressed=true]{background:#722e26;color:#ffffff}",
-      "refersTo": "button-control"
+      "description": "West/east plates order Door above Light, with explicit state readouts and visible keyboard shortcuts. Door closure is dark red; an active light is off-white. Zero power reads NO POWER and disables switches.",
+      "html": "<div class=\"ds-plate\" role=\"group\" aria-label=\"West hallway controls\"><span class=\"ds-side\">WEST HALL</span><button class=\"ds-switch\" aria-label=\"West door\" aria-keyshortcuts=\"A\" aria-pressed=\"false\"><span class=\"ds-copy\"><span class=\"ds-name\">DOOR</span><span class=\"ds-state\" aria-hidden=\"true\">OPEN</span></span><kbd aria-hidden=\"true\">A</kbd></button><button class=\"ds-switch ds-light\" aria-label=\"West hallway light\" aria-keyshortcuts=\"Q\" aria-pressed=\"true\"><span class=\"ds-copy\"><span class=\"ds-name\">LIGHT</span><span class=\"ds-state\" aria-hidden=\"true\">ON</span></span><kbd aria-hidden=\"true\">Q</kbd></button></div>",
+      "css": ".ds-plate{display:flex;flex-direction:column;width:122px;padding:10px 8px 8px;gap:4px;background:#080808ed;border:1px solid #44443e}.ds-side{font:10px/1.4 \"Courier New\",monospace;letter-spacing:.1em;color:#b8b8af;margin:0 3px 4px}.ds-switch{position:relative;display:flex;align-items:center;width:100%;height:62px;padding:10px 12px 10px 24px;border:0;border-top:1px solid #41413b;background:transparent;color:#e5e5df;text-align:left;cursor:pointer;transition:background .12s,color .12s}.ds-switch::before{content:'';position:absolute;left:9px;top:15px;width:4px;height:8px;background:#56564e}.ds-copy{display:flex;flex-direction:column;gap:5px}.ds-name{font:14px/1 \"Courier New\",monospace;letter-spacing:.04em}.ds-state{font:10px/1 \"Courier New\",monospace;letter-spacing:.04em;color:#aaa99f}.ds-switch kbd{position:absolute;right:7px;top:12px;font:10px/1 \"Courier New\",monospace;padding:0;background:none;border:0;color:#a5a59b}.ds-switch:hover:not(:disabled){background:#22221e}.ds-switch[aria-pressed=true]{background:#281511;color:#f4d5ce}.ds-switch[aria-pressed=true]::before{background:#e5a396}.ds-switch[aria-pressed=true] .ds-state,.ds-switch[aria-pressed=true] kbd{color:#e5a396}.ds-switch[aria-pressed=true]:hover:not(:disabled){background:#3c1f18}.ds-light[aria-pressed=true]{background:#dadad0;color:#141411}.ds-light[aria-pressed=true]::before{background:#37372f}.ds-light[aria-pressed=true] .ds-state,.ds-light[aria-pressed=true] kbd{color:#37372f}.ds-light[aria-pressed=true]:hover:not(:disabled){background:#eeeee5}.ds-switch:active:not(:disabled){translate:0 1px}.ds-switch:focus-visible{outline:2px solid #eee;outline-offset:2px;z-index:1}.ds-switch:disabled{cursor:default;opacity:.4}@media(max-width:600px){.ds-plate{width:94px;padding:8px 5px 5px}.ds-side{font-size:9px;margin-left:4px;letter-spacing:.06em}.ds-switch{height:56px;padding-left:19px;padding-right:4px}.ds-switch::before{left:6px;top:13px;width:3px}.ds-name{font-size:12px}.ds-state{font-size:9px;letter-spacing:0}.ds-switch kbd{right:4px;top:11px;font-size:9px}}@media(prefers-reduced-motion:reduce){.ds-switch{transition:none}.ds-switch:active:not(:disabled){translate:none}}",
+      "refersTo": "hallway-switch"
     },
     {
-      "name": "Quiet button",
+      "name": "Gameplay Help action",
       "kind": "button",
-      "description": "Quiet button",
+      "description": "Unboxed in-game instructions trigger with a 44px minimum target and title-menu pointer on hover or keyboard focus.",
       "html": "<button class=\"ds-quiet\">HOW TO PLAY</button>",
-      "css": ".ds-quiet{background:transparent;border:0;color:#a2a896;font:10px monospace;letter-spacing:1px;padding:12px;cursor:pointer}.ds-quiet:hover{background:#373731}.ds-quiet:focus-visible{outline:2px solid var(--lime,#deded5);outline-offset:4px}"
+      "css": ".ds-quiet{min-height:44px;padding:12px 4px;background:none;border:0;color:#c4c4b9;font:11px \"Courier New\",monospace;letter-spacing:.02em;cursor:pointer}.ds-quiet::before{content:'>>';margin-right:8px;opacity:0}.ds-quiet:hover,.ds-quiet:focus-visible{color:#fff;background:none}.ds-quiet:hover::before,.ds-quiet:focus-visible::before{opacity:1}.ds-quiet:focus-visible{outline:2px solid var(--lime,#deded5);outline-offset:4px}@media(max-width:600px){.ds-quiet{font-size:10px}}"
     },
     {
       "name": "Camera map",

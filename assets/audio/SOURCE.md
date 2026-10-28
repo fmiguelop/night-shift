@@ -36,7 +36,7 @@ Retrieved October 27, 2026.
 Edits: loudness normalized to -20 LUFS with a -3 dBTP target, a one-second
 end-to-start crossfade for continuous looping, 44.1 kHz stereo MP3 at 160 kbps.
 Playback uses a quiet gain with entry/exit fades and routes through the jumpscare
-ducking bus. In-game attribution and modification notice appear in Instructions.
+ducking bus. In-game attribution and modification notice appear in Credits on the main menu.
 
 ## Gameplay effects
 
@@ -59,7 +59,7 @@ See `effects-manifest.json` for preview URLs and exact excerpt offsets.
 Edits: excerpts selected from the source recordings, normalized to -20 LUFS
 with a -3 dBTP target, short edge fades, mono 44.1 kHz MP3 at 128 kbps.
 The runtime applies volume envelopes, stereo positioning and some playback-rate
-changes. In-game Instructions include source links, authors, licenses and
+changes. In-game Credits include source links, authors, licenses and
 modification notices. Footsteps by qubodup derive from jtnewlin13's CC0
 “Footsteps on Tile”, as noted on the source page.
 
