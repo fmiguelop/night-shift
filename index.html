@@ -1,4 +1,4 @@
-<!doctype html><html lang="es-SV"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#10130f"><title>El turno nocturno — Terror y supervivencia</title><link rel="stylesheet" href="style.css?v=menu-help"></head><body>
+<!doctype html><html lang="es-SV"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#10130f"><title>El turno nocturno — Terror y supervivencia</title><link rel="stylesheet" href="style.css?v=readable-help"></head><body>
 <main id="app">
 <header><a class="brand" href="./"><span class="brand-icon">◈</span> EL TURNO NOCTURNO<span class="edition">PROTOTIPO DE SUPERVIVENCIA / 01</span></a></header>
 <section class="game-shell"><div class="game-top"><div><span class="live-dot"></span><span id="viewLabel">OFICINA DE SEGURIDAD</span><span class="muted"> / ALA NORTE</span></div><div class="signal">▂▄▆█ <span>EN DIRECTO</span></div></div>
@@ -33,17 +33,38 @@
 <div id="transcriptBody" class="transcript-body" role="region" aria-label="Transcripción de la llamada" tabindex="0"></div>
 <div class="transcript-actions"><button id="closeTranscript" autofocus>Cerrar transcripción</button></div>
 </dialog>
-<dialog id="helpDialog" class="menu-dialog" aria-labelledby="helpTitle"><button id="closeHelp" class="quiet dialog-close" autofocus>CERRAR ×</button><h2 id="helpTitle">Cómo jugar</h2>
-<p>Sobreviví cuatro minutos reales para llegar a las 6 a. m. Los personajes recorren el edificio hacia tu oficina. Cada victoria desbloquea la siguiente de las cinco noches. En las noches posteriores llegan más temprano y se mueven más; además, la dificultad aumenta conforme se acerca el amanecer. Continuar inicia la noche seleccionada. Nueva partida comienza en la noche 1 y conserva tus desbloqueos. Después de completar dos noches, aparece Elegir noche en el menú principal para repetir las noches desbloqueadas. El progreso se guarda en este navegador.</p>
-<p>Usá <b>Espacio</b> para abrir las cámaras. Hacé clic en las salas del mapa para seguir sus movimientos. Usá <b>Q / E</b> para iluminar el pasillo oeste / este y ver a los visitantes. Abrí o cerrá las puertas con <b>A / D</b> antes de que entren.</p>
-<p>Las puertas cerradas, las luces y las cámaras consumen energía adicional. Los personajes retroceden tras unos segundos frente a una puerta cerrada. Si la energía llega a cero, las puertas se abren y te quedan pocos momentos.</p>
-<p><b>Walter:</b> Sus pasos pesados avisan que se acerca por el oeste. Se mueve más rápido mientras usás las cámaras.</p>
-<p><b>Pip:</b> Revisá el archivo (CÁM 06) para retrasar su ataque. Si lo escuchás correr, cerrá la puerta oeste de inmediato.</p>
-<p><b>Dot:</b> Un silbido inquietante y chasquidos de pico anuncian que se acerca por el este. Los destellos breves de la luz este la ahuyentan; si la dejás encendida, se adapta. Cerrá la puerta si no se va.</p>
-<p>Activá o desactivá los subtítulos en Ajustes, desde el menú principal. Los subtítulos indican la dirección de los sonidos, incluso con el audio desactivado.</p>
-<p>Cada noche tiene una transcripción opcional de una llamada. Se abre automáticamente en el primer intento; los reintentos la omiten. Usá <b>Transcripción</b> para volver a leerla durante el turno. Nueva partida reinicia estas introducciones y conserva las noches desbloqueadas.</p>
-<small>Las instrucciones están disponibles en el menú principal. El juego se pausa mientras leés una transcripción.</small>
-</dialog>
+<dialog id="helpDialog" class="menu-dialog" aria-labelledby="helpTitle">
+<div class="help-heading"><h2 id="helpTitle">Cómo jugar</h2><button id="closeHelp" class="quiet dialog-close" autofocus>Cerrar</button></div>
+<div id="helpBody" class="help-body" role="region" aria-label="Instrucciones del juego" tabindex="0">
+<p class="help-objective">Sobreviví hasta las <strong>6 a. m.</strong></p>
+<p>Cada turno dura cuatro minutos reales. Walter, Pip y Dot recorren el edificio hacia tu oficina: vigilalos y cerrá las puertas antes de que entren.</p>
+<section aria-labelledby="helpControls"><h3 id="helpControls">Controles</h3>
+<dl class="help-controls">
+<div><dt><kbd>Espacio</kbd></dt><dd>Abrir o cerrar el monitor de cámaras.</dd></div>
+<div><dt>Clic en el mapa</dt><dd>Cambiar de cámara para seguir sus movimientos.</dd></div>
+<div><dt><kbd>A</kbd> / <kbd>D</kbd></dt><dd>Abrir o cerrar la puerta <strong>oeste / este</strong>.</dd></div>
+<div><dt><kbd>Q</kbd> / <kbd>E</kbd></dt><dd>Encender o apagar la luz del pasillo <strong>oeste / este</strong> para ver a los visitantes.</dd></div>
+</dl></section>
+<section aria-labelledby="helpPower"><h3 id="helpPower">Cuidá la energía</h3>
+<p>Las puertas cerradas, las luces y las cámaras consumen energía adicional. Los personajes retroceden tras unos segundos frente a una puerta cerrada.</p>
+<p><strong>Si la energía llega a cero, las puertas se abren.</strong> Te quedan pocos momentos.</p></section>
+<section aria-labelledby="helpVisitors"><h3 id="helpVisitors">Reconocé a cada visitante</h3>
+<dl class="help-visitors">
+<div><dt>Walter</dt><dd>Sus pasos pesados avisan que se acerca por el <strong>oeste</strong>. Se mueve más rápido mientras usás las cámaras.</dd></div>
+<div><dt>Pip</dt><dd>Revisá el <strong>archivo (CÁM 06)</strong> para retrasar su ataque. Si lo escuchás correr, cerrá la puerta oeste de inmediato.</dd></div>
+<div><dt>Dot</dt><dd>Un silbido inquietante y chasquidos de pico anuncian que se acerca por el <strong>este</strong>. Los destellos breves de la luz este la ahuyentan; si la dejás encendida, se adapta. Cerrá la puerta si no se va.</dd></div>
+</dl></section>
+<details class="help-extra"><summary>Progreso, ajustes y transcripciones</summary>
+<h3>Noches y progreso</h3>
+<p>Cada victoria desbloquea la siguiente de las cinco noches. En las noches posteriores llegan más temprano y se mueven más; además, la dificultad aumenta conforme se acerca el amanecer.</p>
+<p><strong>Continuar</strong> inicia la noche seleccionada. <strong>Nueva partida</strong> comienza en la noche 1 y conserva tus desbloqueos. Después de completar dos noches, aparece <strong>Elegir noche</strong> para repetir las noches desbloqueadas. El progreso se guarda en este navegador.</p>
+<h3>Sonido y subtítulos</h3>
+<p>Activá o desactivá los subtítulos en <strong>Ajustes</strong>, desde el menú principal. Indican la dirección de los sonidos, incluso con el audio desactivado.</p>
+<h3>Transcripciones</h3>
+<p>Cada noche tiene una transcripción opcional de una llamada. Se abre automáticamente en el primer intento; los reintentos la omiten. Usá <strong>Transcripción</strong> para volver a leerla durante el turno. El juego se pausa mientras la leés.</p>
+<p><strong>Nueva partida</strong> reinicia estas introducciones y conserva las noches desbloqueadas. Las instrucciones están disponibles en el menú principal.</p>
+</details>
+</div></dialog>
 <dialog id="creditsDialog" class="menu-dialog" aria-labelledby="creditsTitle"><button id="closeCredits" class="quiet dialog-close" autofocus>CERRAR ×</button><h2 id="creditsTitle">Créditos de sonido</h2>
 <p><small>Ambiente: <a href="https://freesound.org/people/LittleCloudCinema/sounds/211603/" target="_blank" rel="noopener noreferrer">Ambiente espacial inquietante</a> de LittleCloudCinema, <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank" rel="noopener noreferrer">CC BY 3.0</a>. Volumen ajustado y transiciones suaves para la reproducción en bucle.</small></p><h3>Efectos durante el turno</h3><p>Efectos recortados, con volumen ajustado y fundidos. Algunos se reproducen con variaciones de tono o velocidad. Las grabaciones del silbido, la puerta y el monitor CRT tienen licencia para uso no comercial.</p><ul><li><a href="https://freesound.org/people/qubodup/sounds/816018/" target="_blank" rel="noopener noreferrer">Pasos y roce de ropa en bucle</a> de qubodup — <a href="https://creativecommons.org/publicdomain/zero/1.0/" target="_blank" rel="noopener noreferrer">CC0 1.0</a>.</li><li><a href="https://freesound.org/people/nellylongarms/sounds/627523/" target="_blank" rel="noopener noreferrer">Roce metálico</a> de nellylongarms — <a href="https://creativecommons.org/publicdomain/zero/1.0/" target="_blank" rel="noopener noreferrer">CC0 1.0</a>.</li><li><a href="https://freesound.org/people/Darklitstudio/sounds/815110/" target="_blank" rel="noopener noreferrer">Silbido inquietante</a> de Darklitstudio — <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener noreferrer">CC BY-NC 4.0</a>.</li><li><a href="https://freesound.org/people/kyles/sounds/455753/" target="_blank" rel="noopener noreferrer">Puerta de madera: apertura, cierre y crujidos</a> de kyles — <a href="https://creativecommons.org/publicdomain/zero/1.0/" target="_blank" rel="noopener noreferrer">CC0 1.0</a>.</li><li><a href="https://freesound.org/people/81120889/sounds/547945/" target="_blank" rel="noopener noreferrer">Portazo metálico pesado</a> de 81120889 — <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener noreferrer">CC BY-NC 4.0</a>.</li><li><a href="https://freesound.org/people/kyles/sounds/637546/" target="_blank" rel="noopener noreferrer">Encendido y zumbido de luz fluorescente</a> de kyles — <a href="https://creativecommons.org/publicdomain/zero/1.0/" target="_blank" rel="noopener noreferrer">CC0 1.0</a>.</li><li><a href="https://freesound.org/people/NLM/sounds/262401/" target="_blank" rel="noopener noreferrer">Encendido y apagado de monitor CRT</a> de NLM — <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener noreferrer">CC BY-NC 4.0</a>.</li><li><a href="https://freesound.org/people/theplax/sounds/546655/" target="_blank" rel="noopener noreferrer">Monedas sobre una superficie dura</a> de theplax — <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer">CC BY 4.0</a>.</li><li><a href="https://freesound.org/people/LoafDV/sounds/238288/" target="_blank" rel="noopener noreferrer">Crujido tenue</a> de LoafDV — <a href="https://creativecommons.org/publicdomain/zero/1.0/" target="_blank" rel="noopener noreferrer">CC0 1.0</a>.</li><li><a href="https://freesound.org/people/iainmccurdy/sounds/759257/" target="_blank" rel="noopener noreferrer">Zumbido de relé</a> de iainmccurdy — <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer">CC BY 4.0</a>.</li></ul><h3>Sustos de los personajes</h3><p>Grabaciones recortadas, con volumen normalizado y fundidos breves. Se conservan el tono y la velocidad originales.</p><ul>
 <li><a href="https://freesound.org/people/usar2/sounds/678610/" target="_blank" rel="noopener noreferrer">Susto de Walter</a> de usar2 — <a href="https://creativecommons.org/publicdomain/zero/1.0/" target="_blank" rel="noopener noreferrer">CC0 1.0</a>.</li>

@@ -76,7 +76,7 @@ function openTranscript(){
 }
 $('transcript').onclick=()=>openTranscript();
 $('closeTranscript').onclick=()=>$('transcriptDialog').close();
-function openMenuDialog(id){if(started)return;$('settings').open=false;menuStatic.setActive(false);$(id).showModal();$(id).scrollTop=0;}
+function openMenuDialog(id){if(started)return;$('settings').open=false;menuStatic.setActive(false);$(id).showModal();$(id).scrollTop=0;if(id==='helpDialog')$('helpBody').scrollTop=0;}
 $('help').onclick=()=>openMenuDialog('helpDialog');$('closeHelp').onclick=()=>$('helpDialog').close();
 $('credits').onclick=()=>openMenuDialog('creditsDialog');$('closeCredits').onclick=()=>$('creditsDialog').close();
 for(const [id,trigger] of [['helpDialog','help'],['creditsDialog','credits'],['transcriptDialog','transcript']])$(id).addEventListener('close',()=>{last=performance.now();if(started)syncAudio();else menuStatic.setActive(true);render();$(trigger).focus()});

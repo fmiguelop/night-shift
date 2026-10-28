@@ -244,3 +244,29 @@ body:has(#monitor[aria-pressed=true]) .door-controls{visibility:hidden}
 @media(max-width:600px){.menu-dialog{padding:16px 22px}.menu-dialog h2{font-size:24px}}
 .menu-dialog #closeHelp,.menu-dialog #closeCredits{margin:0 0 0 auto;border:1px solid #55554e;padding:10px 14px}
 .menu-dialog #closeCredits:hover{background:#252521}
+
+/* A scan-friendly field guide, scoped to How to Play. */
+#helpDialog{width:min(780px,calc(100vw - 32px));height:min(900px,calc(100svh - 48px));max-height:calc(100svh - 48px);padding:0;overflow:hidden;font-size:1rem;line-height:1.65;color:#e5e5df}
+#helpDialog[open]{display:grid;grid-template-rows:auto minmax(0,1fr)}
+.help-heading{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:20px 32px;border-bottom:1px solid var(--line)}
+#helpDialog h2{font:400 1.75rem/1.25 'Courier New',monospace;margin:0;text-wrap:balance}
+#helpDialog #closeHelp{flex:none;font-size:.875rem;letter-spacing:0;margin:0;min-width:80px;min-height:44px}
+.help-body{min-height:0;overflow-y:auto;overscroll-behavior:contain;padding:24px 32px 36px;scrollbar-color:#75756d #171717}
+.help-body p{max-width:68ch;margin:0 0 16px;text-wrap:pretty}
+#helpDialog .help-objective{font-size:1.125rem;line-height:1.5;margin-bottom:8px}
+#helpDialog h3{font:700 1.125rem/1.4 'Courier New',monospace;margin:32px 0 14px;text-wrap:balance}
+.help-controls,.help-visitors{margin:0}
+.help-controls>div{display:grid;grid-template-columns:156px minmax(0,1fr);gap:20px;padding:12px 0;border-bottom:1px solid #33332e}
+.help-controls dt{font-size:.875rem;align-self:start}
+.help-controls dd,.help-visitors dd{margin:0;min-width:0;text-wrap:pretty}
+#helpDialog kbd{display:inline-block;font:700 .875rem/1.3 'Courier New',monospace;color:#e5e5df;background:#20201c;border:1px solid #66665c;padding:3px 7px}
+.help-visitors>div{display:grid;grid-template-columns:80px minmax(0,1fr);gap:20px;padding:12px 0}
+.help-visitors dt{font-weight:bold}
+.help-extra{margin-top:32px;border-top:1px solid var(--line)}
+.help-extra summary{min-height:44px;padding:16px 0;cursor:pointer;font-weight:bold;font-size:.9375rem;line-height:1.5;color:#deded5}
+.help-extra summary:hover{color:#fff}
+#helpDialog .help-extra h3{margin-top:24px}
+.help-body:focus-visible{outline:2px solid #deded5;outline-offset:-5px}
+.help-extra summary:focus-visible{outline:2px solid #deded5;outline-offset:3px}
+.help-body ::selection{background:#deded5;color:#101010}
+@media(max-width:600px){#helpDialog{width:calc(100vw - 24px);height:calc(100svh - 32px);max-height:calc(100svh - 32px)}.help-heading{padding:16px 20px;gap:12px}#helpDialog h2{font-size:1.5rem}.help-body{padding:20px 20px 28px}.help-controls>div{grid-template-columns:1fr;gap:7px;padding:14px 0}.help-visitors>div{grid-template-columns:1fr;gap:4px;padding:14px 0}#helpDialog h3{margin-top:28px}}

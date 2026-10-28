@@ -151,3 +151,7 @@ Power and usage remain visible during play. Help is an unboxed text action with 
 The user-selected photocopied call log uses muted paper (#cbc9bf), dark ink (#272722), and Courier New with a monospace fallback. Body text is 15px on desktop and 14px at widths up to 600px, with 1.7 line height, generous margins, and compact recording annotations. This treatment belongs to the transcript component.
 
 The native modal pauses gameplay and audio and supports Escape dismissal. Its responsive document body scrolls while the heading and quiet, underlined Close transcript action remain visible. The close action has a 44px minimum target and visible keyboard focus.
+
+### How to Play reading layout
+
+Available from the main menu, the native Cómo jugar modal retains monochrome Courier typography with 16px body text at 1.65 line height, bold 18px section headings, and a 28px title reduced to 24px on mobile. It leads with the survival objective, presents controls and visitor tactics in semantic definition-list rows, and groups progress, settings, and transcript details in a native disclosure. The heading and bordered Cerrar action with a 44px minimum target remain visible above the scrolling body; rows stack at widths up to 600px. Reopening resets the body scroll, Escape dismisses the dialog, and closing returns focus to its menu action.
