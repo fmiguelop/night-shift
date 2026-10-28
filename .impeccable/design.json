@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-10-27T23:45:17.827388+00:00",
+  "generatedAt": "2026-10-28T02:08:19.949063+00:00",
   "title": "Design System: The Night Shift",
   "extensions": {
     "shadows": [],
@@ -9,6 +9,11 @@
         "name": "button-background",
         "value": "background .15s",
         "purpose": "Control hover transition."
+      },
+      {
+        "name": "menu-static",
+        "value": "125ms minimum between canvas redraws",
+        "purpose": "Menu-only television interference at up to 8fps; stopped during play and a fixed frame with reduced motion."
       }
     ],
     "breakpoints": [
@@ -23,6 +28,10 @@
       {
         "name": "wide",
         "value": "1500px"
+      },
+      {
+        "name": "menu-short-height",
+        "value": "650px max-height"
       }
     ],
     "colorMeta": {
@@ -35,11 +44,11 @@
   },
   "components": [
     {
-      "name": "Primary button",
+      "name": "Menu action",
       "kind": "button",
-      "description": "Primary button",
-      "html": "<button class=\"ds-primary\">BEGIN YOUR SHIFT</button>",
-      "css": ".ds-primary{background:transparent;color:#eee;border:0;padding:10px 0;font:18px \"Courier New\",monospace;min-height:48px;cursor:pointer}.ds-primary::before{content:\"> \";opacity:0}.ds-primary:hover::before,.ds-primary:focus-visible::before{opacity:1}.ds-primary:focus-visible{outline:2px solid #eee;outline-offset:4px}",
+      "description": "Unboxed main-menu action; New Game starts Night 1 preserving unlocks, and Continue appears after one completed night.",
+      "html": "<button class=\"ds-menu-action\">New Game</button>",
+      "css": ".ds-menu-action{position:relative;display:block;background:none;border:0;padding:6px 0;min-height:44px;color:#e5e5df;text-align:left;font:400 clamp(20px,2vw,26px)/1.2 \"Courier New\",monospace;cursor:pointer}.ds-menu-action::before{content:\">>\";position:absolute;right:calc(100% + 10px);top:6px;opacity:0;font-size:.8em;line-height:1.5}.ds-menu-action:hover,.ds-menu-action:focus-visible{background:none;color:#fff}.ds-menu-action:hover::before,.ds-menu-action:focus-visible::before{opacity:1}.ds-menu-action:focus-visible{outline:2px solid #eee;outline-offset:4px}@media(max-width:600px){.ds-menu-action{font-size:21px}}",
       "refersTo": "button-primary"
     },
     {
@@ -70,17 +79,31 @@
       "description": "Sound caption",
       "html": "<div class=\"ds-caption\" role=\"status\">Heavy footsteps \u2014 west hall</div>",
       "css": ".ds-caption{padding:8px 14px;background:rgba(8,12,9,.9);color:#eee8c9;font:12px monospace;text-align:center;border:1px solid #6b7254}"
+    },
+    {
+      "name": "Menu Settings",
+      "kind": "custom",
+      "refersTo": "menu-settings",
+      "description": "Bottom-left disclosure; its native checkbox panel opens upward. Sound starts on and subtitles off.",
+      "html": "<details class=\"ds-settings\"><summary>Settings</summary><div class=\"ds-settings-options\"><label><span>Sound</span><input type=\"checkbox\" checked></label><label><span>Subtitles</span><input type=\"checkbox\"></label><p>Directional sound cues, even with sound off.</p></div></details>",
+      "css": ".ds-settings{position:relative;width:min(280px,100%);color:#e5e5df;font-family:\"Courier New\",monospace}.ds-settings summary{width:fit-content;min-height:44px;padding:14px 0;cursor:pointer;font-size:12px;list-style:none;color:#bdbdb6}.ds-settings summary::-webkit-details-marker{display:none}.ds-settings summary:hover,.ds-settings[open] summary{color:#fff}.ds-settings-options{position:absolute;bottom:calc(100% + 8px);left:0;width:min(280px,calc(100vw - 64px));padding:16px 20px;background:#090909f5;border:1px solid #555}.ds-settings-options label{display:flex;align-items:center;justify-content:space-between;min-height:44px;gap:24px;cursor:pointer;font-size:14px}.ds-settings-options input{width:18px;height:18px;margin:0;accent-color:#deded5;cursor:pointer}.ds-settings-options p{margin:12px 0 0;font-size:11px;line-height:1.5;color:#b5b5ad}.ds-settings summary:focus-visible,.ds-settings input:focus-visible{outline:2px solid #eee;outline-offset:4px}"
     }
   ],
   "narrative": {
     "northStar": "Haunted maintenance console",
-    "overview": "The user requested a more immersive, minimal horror game in the spirit of FNAF 1. The room fills the screen; the interface recedes into a clock, power readout, hallway controls, and camera toggle. The former decorative website framing and lime accents no longer lead the experience. University rooms use the user-selected UCA visual reference: an intact published black wordmark in the security office and blue-and-white Spanish room signs. Room geometry is fictional.",
+    "overview": "The user requested a more immersive, minimal horror game in the spirit of FNAF 1. The room fills the screen; the interface recedes into a clock, power readout, hallway controls, and camera toggle. The former decorative website framing and lime accents no longer lead the experience. University rooms use the user-selected UCA visual reference: an intact published black wordmark in the security office and blue-and-white Spanish room signs. Room geometry is fictional. The main menu places a three-line Courier title and unboxed actions on the left of the original dark Walter portrait, with bottom-left Settings opening upward. Continue appears after one completed night; native night selection appears after two. Canvas static stays beneath readable text.",
     "keyCharacteristics": [
       "Near-monochrome, dim surveillance imagery.",
       "Sparse title menu and plain operational typography.",
       "Persistent, readable gameplay states over the room."
     ],
-    "rules": [],
+    "rules": [
+      {
+        "name": "The Quiet Menu Rule",
+        "body": "Keep introduction prose and ordinary progress notes out of the main menu. Only a storage failure adds a progress status message.",
+        "section": "components"
+      }
+    ],
     "dos": [
       "preserve clear active states and lime focus indicators.",
       "keep camera interference beneath readable map and feed controls.",

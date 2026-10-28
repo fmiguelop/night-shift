@@ -16,20 +16,20 @@ A browser survival-horror game intended for short, casual play sessions. The cur
 
 ## Operating Context
 
-The player monitors a fictional university academic block from a campus security office, watches two hallways, and manages doors, lights, and limited power. A round can be restarted after winning or losing. Instructions pause the simulation.
+The player monitors a fictional university academic block from a campus security office, watches two hallways, and manages doors, lights, and limited power. Five nights unlock in sequence. Players can retry losses, advance after wins, or replay unlocked nights from the main menu. Later nights activate threats earlier and increase their activity; each shift also grows harder toward morning. Instructions pause the simulation.
 
 ## Capabilities and Constraints
 
 Current implementation facts, rather than permanent requirements:
 
 - HTML, CSS, and JavaScript modules, with no runtime package dependencies.
-- Local browser state; reloading starts fresh.
+- Active shifts start fresh; unlocked nights and five-night completion persist in local browser storage. Progress remains available within the current session if storage is blocked.
 - Eight camera rooms and three original characters: Walter, Pip, and Dot. Each has a distinct threat pattern.
 - Mouse controls and keyboard shortcuts: Space for cameras, A/D for doors, Q/E for lights.
 - Optional synthesized audio, directional sound captions, camera interference, and jumpscares.
 - Development server: `npm run dev`, serving the project at port 5173. Simulation checks: `npm test`.
 
-Open decisions: target devices, difficulty and replayability goals, persistence, and which current technical choices must remain binding.
+Open decisions: target devices, difficulty tuning beyond the initial five-night curve, and which current technical choices must remain binding.
 
 ## Brand Commitments
 

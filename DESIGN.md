@@ -13,18 +13,28 @@ colors:
 typography:
   display:
     fontFamily: "Courier New, monospace"
-    fontSize: "clamp(44px, 6vw, 80px)"
+    fontSize: "clamp(30px, 3.1vw, 46px)"
     fontWeight: 400
-    lineHeight: 1.08
-    letterSpacing: "-0.025em"
+    lineHeight: 1.16
+    letterSpacing: "0"
+  menu-action:
+    fontFamily: "Courier New, monospace"
+    fontSize: "clamp(20px, 2vw, 26px)"
+    fontWeight: 400
+    lineHeight: 1.2
   body:
     fontFamily: "Courier New, monospace"
     fontSize: "14px"
 components:
   button-primary:
     backgroundColor: "transparent"
-    textColor: "#eeeeee"
-    padding: "10px 0"
+    textColor: "{colors.text}"
+    typography: "{typography.menu-action}"
+    padding: "6px 0"
+  menu-settings:
+    backgroundColor: "#090909f5"
+    textColor: "{colors.text}"
+    padding: "16px 20px"
   button-control:
     backgroundColor: "{colors.control}"
     textColor: "{colors.text}"
@@ -36,7 +46,7 @@ components:
 
 **Creative North Star: "Haunted maintenance console"**
 
-The user requested a more immersive, minimal horror game in the spirit of FNAF 1. The room fills the screen; the interface recedes into a clock, power readout, hallway controls, and camera toggle. The former decorative website framing and lime accents no longer lead the experience.
+The user requested a more immersive, minimal horror game in the spirit of FNAF 1. The room fills the screen; the interface recedes into a clock, power readout, hallway controls, and camera toggle. The former decorative website framing and lime accents no longer lead the experience. The main menu uses bare left-aligned title and action text beside a dark, oversized Walter portrait under television interference.
 
 **Key Characteristics:**
 - Near-monochrome, dim surveillance imagery.
@@ -51,15 +61,15 @@ The user selected [UCA’s visual identity](https://uca.edu.sv/identidad-visual/
 
 ## Typography
 
-Courier New with a monospace fallback carries the interface, referencing the requested minimal horror-game presentation. Body text is 14px. The title scales from 44px to 80px on desktop and is 49px below 600px. Clock text is 32px, reduced to 26px on mobile. Buttons and captions generally use 11–14px; the title action uses 18px.
+Courier New with a monospace fallback carries the interface, referencing the requested minimal horror-game presentation. Body text is 14px. The three-line menu title uses the display token, becomes 30px at widths up to 600px, and becomes 28px at heights up to 650px. Menu actions use the menu-action token and become 21px at widths up to 600px. Settings uses 12px text; the selected night beneath Continue uses 12px text. Clock text is 32px, reduced to 26px on mobile. Gameplay buttons and captions generally use 11–14px.
 
 ## Layout
 
-The office fills a 100svh viewport, with a 570px minimum height (620px on mobile). Door and light controls sit at the left and right edges. The clock is upper-right, power lower-left, instructions lower-right, and the camera toggle lower-center. The title screen hides gameplay controls until a round begins. Camera mode hides the hallway button clusters while leaving keyboard behavior intact. Breakpoints at 900px and 600px compress controls and camera-map dimensions. Live-toolbar-specific offsets keep editing controls clear of gameplay.
+The office fills a 100svh viewport, with a 570px minimum height (620px on mobile). Door and light controls sit at the left and right edges. The clock is upper-right, power lower-left, instructions lower-right, and the camera toggle lower-center. The title screen hides gameplay controls until a round begins. It fills at least 100svh over black, with the title upper-left, actions below it, Walter cropped across the right side, Settings bottom-left, and a small version label bottom-right. Menu padding is clamp(36px, 9vh, 90px) vertically at the top and clamp(32px, 9vw, 140px) horizontally, with 24px below. At widths up to 600px it becomes 52px 42px 18px; at heights up to 650px the top becomes 32px. The content column can scroll on constrained viewports. The action gap is 12px, reduced to 6px in short viewports. Camera mode hides the hallway button clusters while leaving keyboard behavior intact. Breakpoints at 900px and 600px compress controls and camera-map dimensions. Live-toolbar-specific offsets keep editing controls clear of gameplay.
 
 ## Elevation & Depth
 
-The room retains perspective, low lighting, scene shadows, scanlines, and a vignette. The surrounding website shell has no frame or shadow. Interface controls use borders and restrained translucent dark fills.
+The room retains perspective, low lighting, scene shadows, scanlines, and a vignette. The surrounding website shell has no frame or shadow. Interface controls use borders and restrained translucent dark fills. The menu layers the existing Walter grab portrait, grayscale darkness and contrast filters, low-resolution canvas noise, black shading, and scanlines beneath readable text. The portrait is reused without raster changes; provenance remains in assets/characters/test/WALTER-ATTACK.md.
 
 ## Shapes
 
@@ -67,9 +77,21 @@ Controls and panels are rectangular with thin gray borders. Rounded geometry bel
 
 ## Components
 
-### Title action
+### Menu actions
 
-A plain 18px text action with a leading pointer on hover or keyboard focus. Existing copy and start behavior remain intact.
+Unboxed New Game and Continue text actions have a 44px minimum target, no border or fill, and a leading `>>` marker on hover or keyboard focus. Hover and focus brighten the text to white; keyboard focus remains visible. New Game starts Night 1 while preserving unlocked nights. Continue appears after the first completed night and starts the selected night; its smaller second line identifies that night. Reload defaults to the highest unlocked night.
+
+**The Quiet Menu Rule.** Keep introduction prose and ordinary progress notes out of the main menu. Only a storage failure adds a progress status message.
+
+### Menu Settings and night selection
+
+Settings is a small bottom-left disclosure with a 44px minimum target. Its bordered dark panel opens upward, 8px above the trigger, at up to 280px wide. Native Sound and Subtitles checkboxes have 44px label rows and 18px controls. Sound defaults to on and subtitles to off; Settings is accessible only from the main menu. Enabled subtitles remain available with sound disabled.
+
+The labeled native night selector appears beneath the actions only after two nights have been completed (`unlockedNight >= 3`). It lists all five nights and disables locked options. The field has a dark fill, thin gray border, 8px padding, a 36px minimum height, and a visible keyboard focus outline.
+
+### Menu interference
+
+A 320 × 180 canvas supplies pixelated television static at no more than eight frames per second. It stops while a shift is active and resumes on return to the main menu. Reduced motion holds a single static frame instead of animating the interference.
 
 ### Hallway controls
 
@@ -83,7 +105,7 @@ Each feed uses fixed-lens perspective geometry rendered into a canvas: a lecture
 
 ### Status, captions, and help
 
-Power and usage remain visible during play. Sound is on by default and starts with the player’s first shift. A collapsible Settings menu below the title action contains Sound and Subtitles checkboxes; sound defaults to on and subtitles default to off. Settings are only accessible on the main menu. Enabled subtitles remain available with sound disabled. Help pauses the game in a scrolling dialog; endings retain restart behavior. Reduced-motion rules remain in force.
+Power and usage remain visible during play. Sound is on by default and starts with the player’s first shift. The HUD shows the active night. Help pauses the game in a scrolling dialog; endings offer the next night after a win, the same night after a loss, and a main-menu action for replay selection. Night 5 completion offers a replay and acknowledges the full week. Reduced-motion rules remain in force.
 
 ## Do's and Don'ts
 
