@@ -83,7 +83,7 @@ Each feed uses fixed-lens perspective geometry rendered into a canvas: a lecture
 
 ### Status, captions, and help
 
-Power and usage remain visible during play. Audio captions remain available with sound disabled. Help pauses the game in a scrolling dialog; endings retain restart behavior. Reduced-motion rules remain in force.
+Power and usage remain visible during play. Sound is on by default and starts with the player’s first shift. A collapsible Settings menu below the title action contains Sound and Subtitles checkboxes; sound defaults to on and subtitles default to off. Settings are only accessible on the main menu. Enabled subtitles remain available with sound disabled. Help pauses the game in a scrolling dialog; endings retain restart behavior. Reduced-motion rules remain in force.
 
 ## Do's and Don'ts
 

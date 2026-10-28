@@ -4,7 +4,7 @@ import {createScareAudio} from './scare-audio.js';
 import {characterMarkup,preloadCharacters} from './characters.js';
 import {CAMERA_ROOMS,MAP_POSITIONS,createCameraRenderer} from './cameras.js?v=character-sheets';
 import {ROOMS,DURATION,createGame,tick,usage,DEATH_HINTS} from './game.js?v=character-sheets';
-const $=id=>document.getElementById(id);let game=createGame(),started=false,sound=false,audio,atmosphere,scareAudio,effects,last=0,endingShown=false,scareUntil=0,staticUntil=0;
+const $=id=>document.getElementById(id);let game=createGame(),started=false,sound=true,subtitles=false,audio,atmosphere,scareAudio,effects,last=0,endingShown=false,scareUntil=0,staticUntil=0;
 const cameraRenderer=createCameraRenderer($('cameraScene'),$('cast'));
 preloadCharacters();
 const character=a=>characterMarkup(a,'doorway');
@@ -13,12 +13,18 @@ function beep(freq=150,duration=.08){if(!sound||!audio)return;let o=audio.create
 const cueText={Walter:{move:'Heavy footsteps — west hall',near:'Heavy footsteps — west doorway',retreat:'Heavy footsteps recede — west hall'},Pip:{move:'Metallic tapping — archives',tapping:'Rapid tapping — west hall',dash:'RUNNING FOOTSTEPS — CLOSE WEST DOOR',retreat:'Metallic footsteps recede — west hall'},Dot:{move:'Eerie whistle — east hall',near:'Beak clicks — east doorway',retreat:'Whistle recedes — east hall',adapt:'Harsh beak clicks — Dot is resisting the light'}};
 let captionUntil=0;
 function actorCue(event){
- $('soundCaption').textContent=cueText[event.actor][event.type]||'';captionUntil=performance.now()+3500;
+ if(subtitles){$('soundCaption').textContent=cueText[event.actor][event.type]||'';captionUntil=performance.now()+3500;}
  if(!sound||!audio)return;
  effects.actorCue(event);
 }
-$('sound').onclick=()=>{sound=!sound;if(sound&&!audio){audio=new AudioContext();scareAudio=createScareAudio(audio);atmosphere=createAtmosphere(audio,scareAudio.ambience);effects=createSoundEffects(audio,scareAudio.ambience)}if(audio){if(sound)audio.resume();else {effects?.reset();audio.suspend()}}atmosphere?.setPlaying(started&&game.phase==='playing'&&game.power>0);$('sound').innerHTML=`SOUND ${sound?'ON':'OFF'} <span>◖</span>`};
-function start(){effects?.reset();scareAudio?.reset();captionUntil=0;$('soundCaption').textContent='';staticUntil=0;$('cameraView').classList.remove('switching');scareUntil=0;$('jumpscare').classList.add('hidden');$('jumpscare').replaceChildren();game=createGame();started=true;endingShown=false;$('intro').classList.add('hidden');$('ending').classList.add('hidden');$('viewport').classList.remove('lost');last=performance.now();render()}
+function syncAudio(){
+ if(sound&&!audio){audio=new AudioContext();scareAudio=createScareAudio(audio);atmosphere=createAtmosphere(audio,scareAudio.ambience);effects=createSoundEffects(audio,scareAudio.ambience)}
+ if(audio){if(sound)audio.resume().catch(()=>{});else {effects?.reset();audio.suspend().catch(()=>{})}}
+ atmosphere?.setPlaying(sound&&started&&game.phase==='playing'&&game.power>0);
+}
+$('sound').onchange=()=>{if(started)return;sound=$('sound').checked;syncAudio()};
+$('subtitles').onchange=()=>{if(started)return;subtitles=$('subtitles').checked;captionUntil=0;$('soundCaption').textContent='';$('soundCaption').classList.toggle('hidden',!subtitles)};
+function start(){syncAudio();$('settings').open=false;effects?.reset();scareAudio?.reset();captionUntil=0;$('soundCaption').textContent='';staticUntil=0;$('cameraView').classList.remove('switching');scareUntil=0;$('jumpscare').classList.add('hidden');$('jumpscare').replaceChildren();game=createGame();started=true;endingShown=false;$('intro').classList.add('hidden');$('ending').classList.add('hidden');$('viewport').classList.remove('lost');last=performance.now();render()}
 $('start').onclick=start;$('restart').onclick=start;
 function cameraStatic(){staticUntil=performance.now()+280;$('cameraView').classList.add('switching')}
 function toggle(key){if(!started||game.phase!=='playing'||game.power<=0||$('helpDialog').open)return;game[key]=!game[key];if(key==='monitor'&&game.monitor)cameraStatic();if(sound)effects?.control(key,game[key]);render()}
@@ -27,7 +33,7 @@ document.addEventListener('keydown',e=>{if(e.repeat||$('helpDialog').open)return
 $('help').onclick=()=>$('helpDialog').showModal();$('closeHelp').onclick=()=>$('helpDialog').close();
 function render(){
  const active=started&&game.phase==='playing';
- atmosphere?.setPlaying(active&&game.power>0);
+ atmosphere?.setPlaying(sound&&active&&game.power>0);
  for(const key of ['left','right','leftLight','rightLight','monitor']){$(key).setAttribute('aria-pressed',String(game[key]));$(key).disabled=!active||game.power<=0}
  $('leftDoor').classList.toggle('closed',game.left);$('rightDoor').classList.toggle('closed',game.right);
  for(const [side,room] of [['left',6],['right',7]]){$(`${side}Hall`).classList.toggle('lit',game[`${side}Light`]);$(`${side}Visitor`).innerHTML=game[`${side}Light`]?game.actors.filter(a=>a.route[a.step]===room).map(character).join(''):''}
